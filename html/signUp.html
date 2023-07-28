@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../style/signUp.css">
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="init()">
+    <div class="signUpContainer">
+        <img src="../assets/img/join_logo_dark.svg" class="logoImg" alt="">
+        <form onsubmit="register(); return false;">
+            <a href="../html/login.html" class="linkTo">
+                <img src="../assets/icons/arrowLeft.svg" alt="" class="arrowLeft">
+            </a>
+            <div>
+                <h1>Sign up</h1>
+                <img src="../assets/icons/blueLine.svg" alt="" class="blueLineImg">
+            </div>
+            <div class="nameBox">
+                <input type="text" id="inputName" placeholder="Name" required>
+                <img src="../assets/icons/userIcon.svg" alt="">
+            </div>
+            <div class="emailBox">
+                <input type="email" id="inputEmail" placeholder="Email" required>
+                <img src="../assets/icons/emailIcon.svg" alt="">
+            </div>
+            <div class="passwordBox">
+                <input type="password" id="inputPassword" placeholder="Password" required>
+                <img src="../assets/icons/padlockImg.svg" alt="">
+            </div>
+            <div class="passwordBox">
+                <input type="password" id="inputPassword2" class="confirmPasswordBox" placeholder="Confirm password" required>
+                <img src="../assets/icons/padlockImg.svg" alt="">
+            </div>
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
+</body>
+
+<script src="../script/storage.js"></script>
+<script src="../script/userLogin.js"></script>
+<script src="../script/templates.js"></script>
+
+</html>

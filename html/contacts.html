@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join / Contacts</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style_contact.css">
+    <link rel="stylesheet" href="../style/addTask.css">
+    <link rel="stylesheet" href="../style/board.css">
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body onload="includeHtml(); init()">
+    <div w3-include-html="frame.html"></div>
+
+    <!-- Static HTML - hidden "succes" popup -->
+    <div class="success" id="success" style="display: none;">Contact succesfully created</div>
+    <!-- Static HTML - hidden "succes - edit" popup -->
+    <div class="success" id="successEdit" style="display: none;">Contact succesfully edited</div>
+    <!-- Static HTML - hidden "succes - delete" popup -->
+    <div class="success" id="successDelete" style="display: none;">Contact succesfully deleted</div>
+    <!-- Static HTML - Content container -->
+    <div class="container-content">
+
+        <!-- Static HTML - Add Contact -->
+        <div onclick="closeOverlay()" id="overlay_add_contact" class="overlay_add_contact" style="display: none;">
+            <div onclick="event.stopPropagation()" id="addContactCard" class="addContactSlideWrapper">
+                <div class="addContactLeft">
+                    <img class="joinLogo" src="../assets/img/join_logo_bright.svg">
+                    <div class="FS61-700">Add contact</div>
+                    <div class="FS27-400">Tasks are better with a team!</div>
+                    <span class="blue-line-v"></span>
+                </div>
+                <div class="addContactRight">
+                    <div class="addContactRight_left">
+                        <img src="../assets/img/logo_contact.svg">
+                    </div>
+                    <div>
+                        <img onclick="hideAddContactCard()" class="close_symbol"
+                            src="../assets/icons/icon_add_contact_X.svg">
+                        <form id="form_add_contact" class="addContactRight_right" onsubmit="addContact(); return false;">
+                            <input class="inputDesktop" id="name" type="text" placeholder="Name" required pattern="[A-Z][a-zA-Z ]*">
+                            <input class="inputDesktop" id="email" type="email" placeholder="Email" required>
+                            <input class="inputDesktop" id="phone" type="tel" placeholder="Phone" required pattern="[0-9]+">
+                            <div class="flex">
+                                <button onclick="hideAddContactCard()" type="button" class="cancel_btn">Cancel</button>
+                                <button type="submit" class="create_btn">Create contact</button>
+                            </div>
+                            <img class="icon-name-add-contact" src="../assets/icons/icon_add_contact_user.svg" alt="">
+                            <img class="icon-email-add-contact" src="../assets/icons/icon_add_contact_mail.svg" alt="">
+                            <img class="icon-phone-add-contact" src="../assets/icons/icon_add_contact_phone.svg" alt="">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Static HTML - Add Contact MOBILE -->
+        <div onclick="closeOverlayMobile()" id="overlay_add_contact_mobile" class="overlay_add_contact_mobile"
+            style="display: none;">
+            <div onclick="event.stopPropagation()" id="addContactCard_mobile" class="addContactSlideWrapperMobile">
+                <div class="addContactTopMobile">
+                    <img onclick="hideMobileAddContactCard()" class="close_symbol_mobile"
+                        src="../assets/icons/icon_add_contact_X_white.svg">
+                    <div class="FS47-700">Add contact</div>
+                    <div class="FS20-400">Tasks are better with a team!</div>
+                    <span class="blue-line-v-mobile"></span>
+                </div>
+                <div class="addContactBottomMobile">
+                    <div class="addContactBottom">
+                        <img class="addContactImg" src="../assets/img/logo_contact.svg">
+                    </div>
+                    <div>
+                        <form id="form_add_contact_mobile" class="addContactBottom" onsubmit="addContactMobile(); return false;">
+                            <input class="inputMobile" id="name_mobile" type="text" placeholder="Name" required pattern="[A-Z][a-zA-Z ]*">
+                            <input class="inputMobile" id="email_mobile" type="email" placeholder="Email" required>
+                            <input class="inputMobile" id="phone_mobile" type="tel" placeholder="Phone" required pattern="[0-9]+">
+
+
+                            <button type="submit" class="create_btn_mobile">Create contact<img
+                                    src="../assets/icons/icon_add_contact_mobile_check.svg"></button>
+
+                            <img class="icon-name-add-contact_mobile" src="../assets/icons/icon_add_contact_user.svg"
+                                alt="">
+                            <img class="icon-email-add-contact_mobile" src="../assets/icons/icon_add_contact_mail.svg"
+                                alt="">
+                            <img class="icon-phone-add-contact_mobile" src="../assets/icons/icon_add_contact_phone.svg"
+                                alt="">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Static HTML - hidden Detail Contact MOBILE Container -->
+        <div id="contacts-right-mobile" class="contacts-right-mobile" style="display: none;">
+            <div class="FS16-400 ml16 ">Kanban Project Management Tool</div>
+            <div class="subHeaderMobile">
+                <div class="subHeader-Container">
+                    <div>
+                        <div class="FS47-700">Contacts</div>
+                        <div class="FS20-400">Better with a team</div>
+                        <span class="blue-line-v-mobile"></span>
+                    </div>
+                    <img class="contactDetailMobileBackImg" onclick="hideMobileContactView ()"
+                        src="../assets/icons/icon_arrow_left.svg">
+                </div>
+                <div id="contactsboxbigmobile" class="contact_big_container"></div>
+            </div>
+        </div>
+        <!-- Static HTML - Edit Contact -->
+        <div onclick="closeOverlay()" id="overlay_edit_contact" class="overlay_edit_contact" style="display: none;">
+            <div onclick="event.stopPropagation()" id="editContactCard" class="editContactSlideWrapper">
+                <div class="editContactLeft">
+                    <img class="joinLogo" src="../assets/img/join_logo_bright.svg">
+                    <div class="FS61-700">Edit contact</div>
+                    <span class="blue-line-v"></span>
+                </div>
+                <div class="editContactRight">
+                    <div id="editContactRight_left" class="editContactRight_left"></div>
+                    <div id="editContactForm"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Static HTML - MOBILE Edit Contact -->
+        <div onclick="closeOverlayMobile()" id="overlay_edit_contact_mobile" class="overlay_edit_contact_mobile"
+            style="display: none;">
+            <div onclick="event.stopPropagation()" id="editContactCard_mobile" class="editContactSlideWrapperMobile">
+                <div class="editContactTopMobile">
+                    <img onclick="hideMobileEditContactCard();closeOverlayMobile()" class="close_symbol_mobile"
+                        src="../assets/icons/icon_add_contact_X_white.svg">
+                    <div class="FS47-700">Edit contact</div>
+                    <span class="blue-line-v-mobile"></span>
+                </div>
+                <div class="editContactBottomMobile">
+                    <div id="editContactRight_mobile_usercircle"></div>
+                    <div id="editContactForm_mobile"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Static HTML -Contacts Container -->
+        <div class="contacts-big">
+            <div id="contacts-left-wrapper">
+                <div id="contacts-left" class="contacts-left">
+                    <!-- Static HTML - hidden add Contact MOBILE Btn -->
+                    <div class="newContactContainermobile">
+                        <div onclick="showMobileAddContactCard ()" class="newContactMobile" id="newContactMobile">
+                            New contact <img src="../assets/icons/icon_add_contact.svg">
+                        </div>
+                    </div>
+                    <div id="contactsboxsmall" class="contact_small"></div>
+                </div>
+            </div>
+            <div id="contacts-right-wrapper" class="contacts-right-wrapper">
+                <div class="contacts-right">
+                    <div class="subHeader">
+                        <div class="FS61-700">Contacts</div>
+                        <span class="blue-line-h"></span>
+                        <div class="FS27-400">Better with a team</div>
+                    </div>
+                    <div id="contactsboxbig" class="contact_big_container"></div>
+                    <div class="newContactContainer">
+                        <div onclick="showAddContactCard ()" class="newContact">
+                            New contact <img src="../assets/icons/icon_add_contact.svg">
+                        </div>
+                    </div>
+                    <!-- Static HTML - add Contact Container -->
+                    <div class="newContactContainer">
+                        <div id="addContactBtn" onclick="showAddContactCard ()" class="newContact">
+                            New contact <img src="../assets/icons/icon_add_contact.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- div for Add task from Contacts-->
+
+    <div onclick="closeAddTaskBoard()" class="container-add-new-task-from-button d-none"
+        id="container_add_new_task_from_button">
+
+    </div>
+
+
+    <!-- div for popup added task-->
+
+    <div class="container-pop-up-add-task d-none" id="container_pop_up_add_task">
+
+    </div>
+
+    <script src="../script/contactsTemplates.js"></script>
+    <script src="../script/frame.js"></script>
+    <script src="../script/contacts.js"></script>
+    <script src="../script/storage.js"></script>
+    <script src="../script/addTask.js"></script>
+    <script src="../script/board.js"></script>
+    <script src="../script/templates.js"></script>
+    <script src="../script/loadInitialsToFrame.js"></script>
+</body>
+
+</html>

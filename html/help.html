@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join / Help</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="includeHtml(); loadUserData()">
+
+    <div w3-include-html="frame.html"></div>
+    <div class="container-content">
+        <a class="arrow-back" href="javascript:history.back()">
+            <img src="../assets/icons/icon_arrow_left.svg" alt="">
+        </a>
+
+        <div class="container-help">
+            <div class='help'>
+                <h1>Help</h1>
+                <h2>What is Join?</h2>
+                <p> <!-- mit freundlicher Unterstützung von ChatGPT:-->
+                    A Kanban tool is a software application designed to help teams implement the Kanban method for
+                    project management and workflow visualization. It provides a digital platform for creating and
+                    managing Kanban boards, which typically consist of columns representing different stages or statuses
+                    of tasks. Team members can add tasks or cards to the board and move them across columns as work
+                    progresses. Kanban tools often include features like task assignment, due dates, priority settings,
+                    and collaboration options. They facilitate real-time communication, transparency, and efficiency in
+                    team workflows, enabling better coordination, task tracking, and overall productivity.
+                </p>
+                <h2>How to use it</h2>
+                <ol>
+                    <li>Create a new task under Add Task, or click the Add Task button on the board. Paste all content
+                        and save the tasks.</li>
+                    <li>Create subtasks and work through the task as intended. Drag the task to the appropriate
+                        processing status.</li>
+                    <li>Be happy when the task is completed...the next one will come for sure.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../script/storage.js"></script>
+    <script src="../script/frame.js"></script>
+    <script src="../script/templates.js"></script>
+    <script src="../script/loadInitialsToFrame.js"></script>
+</body>
+
+</html>

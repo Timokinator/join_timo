@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style/frame.css">
+</head>
+
+<body onload="loadInitials()">
+
+    <div class="template-sidebar-desktop">
+        <div class="wrapper-sidebar">
+            <div class="sidebar">
+
+                <img onclick="toSummary()" class="logo-sidebar" src="../assets/img/join_logo_bright.svg" alt="">
+
+                <div class="sidebar-menu">
+
+                    <a class="sidebar-link" href="../html/summary.html">
+                        <div class="sidebar-container-row">
+                            <img class="sidebar-icon" src="../assets/icons/icon_sidebar_summary.svg" alt="">
+                            <span class="sidebar-text">Summary</span>
+                        </div>
+                    </a>
+
+                    <a class="sidebar-link" href="../html/board.html">
+                        <div class="sidebar-container-row">
+                            <img class="sidebar-icon" src="../assets/icons/icon_sidebar_board.svg" alt="">
+                            <span class="sidebar-text">Board</span>
+                        </div>
+                    </a>
+
+                    <a class="sidebar-link" href="../html/add_task.html">
+                        <div class="sidebar-container-row">
+                            <img class="sidebar-icon" src="../assets/icons/icon_sidebar_addTask.svg" alt="">
+                            <span class="sidebar-text">Add Task</span>
+                        </div>
+                    </a>
+
+                    <a class="sidebar-link" href="../html/contacts.html">
+                        <div class="sidebar-container-row">
+                            <img class="sidebar-icon" src="../assets/icons/icon_sidebar_contacts.svg" alt="">
+                            <span class="sidebar-text">Contacts</span>
+                        </div>
+                    </a>
+                </div>
+
+                <a class="sidebar-link" href="../html/legal_notice.html">
+                    <div class="container-legal">
+                        <div class="sidebar-container-row">
+                            <img class="sidebar-icon" src="../assets/icons/icon-sidebar-legal.svg" alt="">
+                            <span class="sidebar-text">Legal notice</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="topbar">
+            <div class="topbar-text">Kanban Project Management Tool</div>
+            <div class="topbar-container-img">
+                <a href="../html/help.html">
+                    <img class="hover" src="../assets/icons/icon-sidebar-help.svg" alt="">
+                </a>
+
+                <div class="userInitialsbox" onclick="openSubmenu('desktop')">
+                    <div class="userInitials"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="template-sidebar-mobile">
+        <a class="container-mobile-links" href="../html/summary.html">
+            <img src="../assets/icons/icon_sidebar_summary.svg" alt="">
+            <span class="sidebar-text">Summary</span>
+        </a>
+
+        <a class="container-mobile-links" href="../html/board.html">
+            <img src="../assets/icons/icon_sidebar_board.svg" alt="">
+            <span class="sidebar-text">Board</span>
+        </a>
+
+        <a class="container-mobile-links" href="../html/add_task.html">
+            <img src="../assets/icons/icon_sidebar_addTask.svg" alt="">
+            <span class="sidebar-text">Add Task</span>
+        </a>
+
+        <a class="container-mobile-links" href="../html/contacts.html">
+            <img src="../assets/icons/icon_sidebar_contacts.svg" alt="">
+            <span class="sidebar-text">Contacts</span>
+        </a>
+    </div>
+
+    <div class="topbar-mobile">
+
+        <img onclick="toSummary()" class="img-topbar-mobile" src="../assets/img/join_logo_dark.svg" alt="">
+        <div class="userInitialsbox" onclick="openSubmenu('mobile')">
+            <div class="userInitialsMobile"></div>
+        </div>
+    </div>
+
+    <div onmouseleave="closeSubmenu()" class="container-submenu-user d-none" id="container_submenu_user">
+
+    </div>
+
+
+    <script src="../script/storage.js"></script>
+    <script src="../script/userLogin.js"></script>
+    <script src="../script/loadInitialsToFrame.js"></script>
+    <script src="../script/summary.js"></script>
+    <script src="../script/templates.js"></script>
+
+</body>
+
+</html>

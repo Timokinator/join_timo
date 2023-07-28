@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join / Board</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/addTask.css">
+    <link rel="stylesheet" href="../style/board.css">
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body onload="includeHtml(); initBoard()">
+    <div w3-include-html="frame.html"></div>
+    <div class="container-content">
+        <div class="title-mobile">
+            <span>Kanban Project Management Tool</span>
+        </div>
+        <header>
+            <h1 class="headline-menu">Board</h1>
+            <div class="container-search-and-add-task">
+                <div class="buttons-right-side-header-board">
+                    <div class="container-input-board">
+                        <input onkeyup="searchTaskFromBoard()" class="search_input_board" placeholder="Find Task"
+                            type="text" name="" id="search_input_board">
+                        <div class="container-img-input-board">
+                            <img src="../assets/icons/icon_small_line_vertical.svg" alt="">
+                            <img class="img-lens-board" src="../assets/icons/icon_lens.svg" alt="">
+                        </div>
+                    </div>
+
+                    <button onclick="addNewTask('todo')" class="btn-add-task-header-board">
+                        <span>Add Task</span>
+                        <img src="../assets/icons/icon_plus_bright.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="container-rows-board">
+
+            <div class="row-status-board">
+                <div class="headline-row-status-board">
+                    <span class="headline-status-board">To do</span>
+                    <button onclick="addNewTask('todo')" class="btn-plus-row-status-board">
+                        <img class="" src="../assets/icons/icon_plus_dark.svg" alt="">
+                    </button>
+                </div>
+
+                <div ondrop="moveTaskTo('todo')" ondragleave="unsetHighlight('todo')"
+                    ondragover="allowDrop(event); highlight('todo')" class="container-single-tasks-board"
+                    id="container_tasks_board_todo">
+                </div>
+            </div>
+
+
+            <div class="row-status-board">
+                <div class="headline-row-status-board">
+                    <span class="headline-status-board">In progress</span>
+                    <button onclick="addNewTask('progress')" class="btn-plus-row-status-board">
+                        <img class="" src="../assets/icons/icon_plus_dark.svg" alt="">
+                    </button>
+                </div>
+
+                <div ondrop="moveTaskTo('progress')" ondragleave="unsetHighlight('progress')"
+                    ondragover="allowDrop(event); highlight('progress')" class="container-single-tasks-board"
+                    id="container_tasks_board_progress">
+
+                </div>
+            </div>
+
+
+
+            <div class="row-status-board">
+                <div class="headline-row-status-board">
+                    <span class="headline-status-board">Awaiting Feedback</span>
+                    <button onclick="addNewTask('awaiting')" class="btn-plus-row-status-board">
+                        <img class="" src="../assets/icons/icon_plus_dark.svg" alt="">
+                    </button>
+                </div>
+
+                <div ondrop="moveTaskTo('awaiting')" ondragleave="unsetHighlight('awaiting')"
+                    ondragover="allowDrop(event); highlight('awaiting')" class="container-single-tasks-board"
+                    id="container_tasks_board_awaiting">
+                </div>
+            </div>
+
+            <div class="row-status-board">
+                <div class="headline-row-status-board">
+                    <span class="headline-status-board">Done</span>
+                    <button onclick="addNewTask('done')" class="btn-plus-row-status-board">
+                        <img class="" src="../assets/icons/icon_plus_dark.svg" alt="">
+                    </button>
+                </div>
+
+                <div ondrop="moveTaskTo('done')" ondragleave="unsetHighlight('done')"
+                    ondragover="allowDrop(event); highlight('done')" class="container-single-tasks-board"
+                    id="container_tasks_board_done">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div onclick="closeTaskDetail()" class="single-task-details d-none" id="container_single_task_details"></div>
+
+    <!--Add Task from Button-->
+
+
+    <div onclick="closeAddTaskBoard()" class="container-add-new-task-from-button d-none"
+        id="container_add_new_task_from_button">
+
+    </div>
+
+
+    <!-- Edit Task container-->
+
+    <div onclick="closeEditTask()" class="container-background-edit-task d-none" id="container_background_edit_task">
+
+
+    </div>
+
+
+    <div class="container-pop-up-add-task d-none" id="container_pop_up_add_task">
+
+    </div>
+
+
+
+
+    <script src="../script/board.js"></script>
+    <script src="../script/loadInitialsToFrame.js"></script>
+    <script src="../script/contacts.js"></script>
+    <script src="../script/frame.js"></script>
+    <script src="../script/storage.js"></script>
+
+    <script src="../script/addTask.js"></script>
+    <script src="../script/editTask.js"></script>
+
+    <script src="../script/templates.js"></script>
+    <script src="../script/dragAndDrop.js"></script>
+
+</body>
+
+</html>

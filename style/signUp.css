@@ -1,0 +1,259 @@
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+body {
+    background: #F6F7F8;
+}
+
+.logoImg {
+    width: 100.034px;
+    height: 121.966px;
+    flex-shrink: 0;
+
+    position: fixed;
+    top: 80px;
+    left: 77px;
+}
+
+.arrowLeft {
+    width: 37px;
+    height: 37px;
+
+    position: absolute;
+    left: 31px;
+    top: 35px;
+}
+
+.signUpContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+form {
+    margin-top: 5rem;
+    position: relative;
+    display: flex;
+    width: 652px;
+    padding: 35px 0px;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    border-radius: 30px;
+    background: var(--white, #FFF);
+
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+form h1 {
+    color: #000;
+    text-align: center;
+
+    /* Version 2/t1 */
+    font-size: 61px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+form input {
+    display: flex;
+    width: 422px;
+    padding: 13px 21px;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid var(--style, #D1D1D1);
+    background: #FFF;
+}
+
+.nameBox, .emailBox, .passwordBox {
+    position: relative;
+}
+
+form input {
+    color: black;
+
+    /* Version 2/t6 */
+    font-size: 21px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.nameBox img {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.emailBox img {
+    position: absolute;
+    top: 17px;
+    right: 21px;
+    width: 20px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.passwordBox img {
+    position: absolute;
+    top: 17px;
+    right: 21px;
+    width: 18px;
+    height: 21px;
+    flex-shrink: 0;
+}
+
+form button {
+    display: flex;
+    width: 145px;
+    height: 51px;
+    padding: 4px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 8px;
+    background: #2A3647;
+    color: white;
+}
+
+form button:hover {
+    cursor: pointer;
+    scale: 1.03;
+}
+
+
+
+@media only screen and (max-width: 1050px) {
+    .logoImg {
+        position: fixed;
+        top: 37px;
+        left: 38px;
+        width: 64px;
+        height: 78.031px;
+    }
+
+    form h1 {
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 47px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 56.4px */
+    }
+
+    form input {
+        display: flex;
+        padding: 12px 21px;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .logoImg {
+        position: fixed;
+        top: 37px;
+        left: 38px;
+        width: 64px;
+        height: 78.031px;
+    }
+
+    form h1 {
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 47px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 56.4px */
+    }
+
+    form input {
+        display: flex;
+        padding: 12px 21px;
+        align-items: center;
+        gap: 10px;
+        align-self: stretch;
+    }
+
+    form {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+
+
+    form {
+        display: flex;
+        width: 396px;
+        padding: 35px 0px;
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .linkTo {
+        position: absolute;
+        top: 51px;
+        left: 41px;
+        width: 32px;
+        height: 32px;
+        z-index: 1;
+    }
+
+    .arrowLeft {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+
+    form h1 {
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 47px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 56.4px */
+    }
+
+    
+    form input {
+        width: 100%;
+    }
+
+}

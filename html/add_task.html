@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join / Add Task</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/addTask.css">
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="includeHtml(); initAddTask(); loadUserData()">
+    <div w3-include-html="frame.html"></div>
+
+    <div class="container-content">
+        <div class="title-mobile">
+            <span>Kanban Project Management Tool</span>
+        </div>
+        <h1 class="headline-menu">Add Task</h1>
+        <form id="form_add_task" class="form-add-task" onsubmit="return false">
+            <div class="left_side_desktop-add-task">
+
+                <div class="container-input">
+                    <span class="form-text-add-task">Title</span>
+                    <input class="inputfield-add-task" type="text" required placeholder="Enter a title" name=""
+                        id="title_form">
+                </div>
+
+                <div class="container-input">
+                    <span class="form-text-add-task">Description</span>
+                    <textarea class="inputfield-add-task" maxlength="200" placeholder="Enter a description" name=""
+                        id="description_form"></textarea>
+                </div>
+
+                <div class="container-input">
+                    <span class="form-text-add-task">Category</span>
+                    <select class="inputfield-add-task" type="text" required name="" id="category_form">
+                        <option value="" disabled selected>Select a category</option>
+                        <option class="sales" value="sales">Sales</option>
+                        <option class="marketing" value="marketing">Marketing</option>
+                        <option class="accounting" value="accounting">Accounting</option>
+                        <option class="development" value="development">Development</option>
+                        <option class="purchase" value="purchase">Purchase</option>
+                    </select>
+                </div>
+
+                <div class="container-input">
+                    <span class="form-text-add-task">Assigned to</span>
+                    <select oninput="addMember()" class="inputfield-add-task" type="text" required name=""
+                        id="assignedTo_form">
+                    </select>
+
+                    <div class="" id="click_to_delete_text"></div>
+
+                    <div class="selected-members-add-task" id="selected_members_add_task">
+
+                    </div>
+                </div>
+            </div>
+
+            <img class="line-icon-add-task" src="../assets/icons/vertical_line_addTask.svg" alt="">
+
+            <div class="right_side_desktop-add-task">
+
+                <div class="container-input">
+                    <span class="form-text-add-task">Due date</span>
+                    <input class="inputfield-add-task" type="date" required placeholder="dd/mm/yyyy" name=""
+                        id="dueDate_form">
+                </div>
+
+                <div class="container-input">
+                    <span class="form-text-add-task">Prio</span>
+
+                    <div class="container-prio-btn-add-task">
+
+                        <div id="prio_btn_urgent" class="prio-btn-add-task" onclick="setPrioValue('urgent')">
+                            <span class="text-btn-prio-add-task">Urgent</span>
+                            <img src="../assets/icons/icon_prio_high.svg" alt="">
+                        </div>
+
+                        <div id="prio_btn_medium" class="prio-btn-add-task prio-selected"
+                            onclick="setPrioValue('medium')">
+                            <span class="text-btn-prio-add-task">Medium</span>
+                            <img src="../assets/icons/icon_prio_medium.svg" alt="">
+                        </div>
+
+                        <div id="prio_btn_low" class="prio-btn-add-task" onclick="setPrioValue('low')">
+                            <span class="text-btn-prio-add-task">Low</span>
+                            <img src="../assets/icons/icon_prio_low.svg" alt="">
+                        </div>
+
+                        <input required id="prio_hidden" type="hidden" value="medium">
+                    </div>
+                </div>
+
+                <div class="container-input pos-relative">
+                    <span class="form-text-add-task">Subtasks</span>
+                    <input class="inputfield-add-task" maxlength="30" type="text" placeholder="Add new subtask" name=""
+                        id="input_subtask">
+                    <img onclick="addSubtask()" class="btn-plus-add-task" src="../assets/icons/icon_plus_dark.svg"
+                        alt="">
+                    <div class="container-subtasks" id="container_subtasks">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-container-add-task">
+                <button onclick="reset(); resetAssignedToArrays()" id="btn_clear_task" type="button" for
+                    class="btn-clear">
+                    <span>Clear</span>
+                    <img src="../assets/icons/icon_cross_dark.svg" alt="">
+                </button>
+
+                <button onclick="addTask('todo')" class="btn-create-task">
+                    <span>Create Task</span>
+                    <img src="../assets/icons/icon_check_bright.svg" alt="">
+                </button>
+
+            </div>
+        </form>
+
+        <div class="container-pop-up-add-task d-none" id="container_pop_up_add_task">
+
+        </div>
+    </div>
+
+
+    <script src="../script/frame.js"></script>
+    <script src="../script/storage.js"></script>
+    <script src="../script/addTask.js"></script>
+    <script src="../script/contacts.js"></script>
+    <script src="../script/templates.js"></script>
+    <script src="../script/loadInitialsToFrame.js"></script>
+</body>
+
+</html>

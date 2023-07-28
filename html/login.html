@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style/landingPage.css">
+    <link rel="shortcut icon" href="../assets/favicon/favicon_bright.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="getUsersInfo(); loadLogInHTML()">
+    <div class="msgBox visible"></div>
+    <img onclick="location.reload()" src="../assets/img/join_logo_dark.svg" alt="" class="logoImg hover">
+
+    <div class="signUpNav">
+        <a href="../html/signUp.html" class="navSignUpLink">
+            <p class="hover">Not a Join user?</p>
+        </a>
+        <a href="../html/signUp.html"><button class="hover">Sign up</button></a>
+    </div>
+
+    <div id="logInContainer">
+
+        <form onsubmit="logIn(); return false;" id="register">
+
+            <h1 class="loginTitle">Log In</h1>
+            <img src="../assets/icons/blueLine.svg" alt="">
+            <div class="warningBox">Email oder Password stimmen nicht überein!</div>
+            <div class="counter"></div>
+            <div class="inputBox">
+                <div class="emailBox">
+                    <input type="email" id="email" required placeholder="Email">
+                    <img src="../assets/icons/emailIcon.svg" alt="">
+                </div>
+                <div class="passwordBox">
+                    <input type="password" id="password" required placeholder="Password">
+                    <img src="../assets/icons/padlockImg.svg" alt="">
+                </div>
+            </div>
+            <div class="rememberMeContainer">
+                <div>
+                    <input type="checkbox" name="RememberMe" id="RememberMe">
+                    <label for="RememberMe">Remember me</label>
+                </div>
+                <a href="../html/forgetPassword.html" class="forgetPasswordLink hover">Forgot my password</a>
+            </div>
+            <div class="formBtnContainer">
+                <button class="hover" type="submit" id="logInBtn">Log in</button>
+                <button class="hover" onclick="guestLogIn()" type="button" id="guestLogInBtn">Guest Log in</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../script/storage.js"></script>
+    <script src="../script/userLogin.js"></script>
+    <script src="../script/loadInitialsToFrame.js"></script>
+    <script src="../script/templates.js"></script>
+</body>
+
+</html>
