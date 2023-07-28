@@ -15,7 +15,11 @@
 
 <body onload="init()">
     <div class="signUpContainer">
-        <img src="../assets/img/join_logo_dark.svg" class="logoImg" alt="">
+
+        <div class="container-image-signup">
+            <img src="../assets/img/join_logo_dark.svg" class="logoImg" alt="">
+        </div>
+
         <form onsubmit="register(); return false;">
             <a href="../html/login.html" class="linkTo">
                 <img src="../assets/icons/arrowLeft.svg" alt="" class="arrowLeft">
@@ -37,7 +41,8 @@
                 <img src="../assets/icons/padlockImg.svg" alt="">
             </div>
             <div class="passwordBox">
-                <input type="password" id="inputPassword2" class="confirmPasswordBox" placeholder="Confirm password" required>
+                <input type="password" id="inputPassword2" class="confirmPasswordBox" placeholder="Confirm password"
+                    required>
                 <img src="../assets/icons/padlockImg.svg" alt="">
             </div>
             <button type="submit">Sign up</button>
