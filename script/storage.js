@@ -2,7 +2,7 @@
  * Constant containing the access token for the external Storage API.
  * @type {string}
  */
-const STORAGE_TOKEN = 'YQR02E4B1RN1R7GKT3NJ3PI7EDKP7PQ170R7RYV3';
+const STORAGE_TOKEN = '1V2GXTE2RA1IZFC52LMAMBF71H8ZCVWX64TSIXB5';
 
 /**
  * Constant containing the URL for accessing the external Storage API.
