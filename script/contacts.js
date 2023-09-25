@@ -75,9 +75,10 @@ async function addContact() {
         createdContactSuccessfully();
         hideAddContactCard();
     }
-    document.getElementById('form_add_contact').reset();
-    await refresh();
     safeContacts();
+    document.getElementById('form_add_contact').reset();
+    // safeContacts();
+    await refresh();
 }
 /**
  * Asynchronous function to add a new contact from the Mobile Version to the "contacts" array
