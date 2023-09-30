@@ -439,3 +439,16 @@ checkbox {
 
 
 }
+
+
+@media screen and (max-width: 1050px ) and (orientation: landscape) and (max-height: 650px) {
+
+    .signUpNav {
+        display: flex;
+        flex-direction: column;
+        left: unset;
+    }    
+
+
+
+}
