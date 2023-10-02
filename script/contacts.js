@@ -311,11 +311,11 @@ function renderEditContactMobile(i) {
  * @param {number} i - This is the index of an existing contact
  */
 async function deleteContact(i) {
-    if (contacts.length > 9) {
+    if (contacts.length > 1) {
         contacts.splice(i, 1);
         deletedContactSuccessfully();
     } else {
-        alert("For Testreasons we can´t delete a contact if there is only 10 or less available.");
+        alert("For Testreasons we can´t delete a contact if there is only 1 or less available.");
     }
     sortedalphabetically = [];
     await refresh();
