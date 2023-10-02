@@ -75,7 +75,7 @@ async function addContact() {
         createdContactSuccessfully();
         hideAddContactCard();
     }
-    safeContacts();
+    await safeContacts();
     document.getElementById('form_add_contact').reset();
     // safeContacts();
     await refresh();
@@ -96,6 +96,7 @@ async function addContactMobile() {
         createdContactSuccessfully();
         hideMobileAddContactCard();
     }
+    await safeContacts();
     document.getElementById('form_add_contact_mobile').reset();
     await refresh();
 }
@@ -243,6 +244,7 @@ async function renderContacts() {
     }
     createContactDiv(contact, i, firstLetter, color);
     }
+    await safeContacts();
 }
 /**
    * Function to create the letter container
@@ -380,7 +382,7 @@ async function extractInitials(sortedContacts) {
         const initialsString = matches ? matches.join('') : '';
         return initialsString;
     });
-    safeContacts();
+    await safeContacts(); //tik zugefügt
 }
 /**
  * Function assignes random Color to Usercircle
@@ -400,9 +402,10 @@ function assignRandomColorToDiv(i) {
         contacts[i].color = color;
     }
     // Return the assigned color
+    safeContacts(); //tik hochgezogen
     return contacts[i].color;
-    safeContacts();
-}
+};
+
 /**
  * function alphabetically sorts the "contacts" array by the first capital letter of the "name" field and pushes it into a new array named "sortedalphabetically"
  * @param {Array} contacts - This is the "contacts Array"
