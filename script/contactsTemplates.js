@@ -71,7 +71,7 @@ function renderEditContactTemplate(i) {
                     <form id="form_edit_contact" class="editContactRight_right" onsubmit="editContact(${i});closeOverlay();return false;">
                         <input class="inputDesktop" id="edit-name" type="text" value="${contacts[i]['name']}" required pattern="[A-Z][a-zA-Z ]*">
                         <input class="inputDesktop" id="edit-email" type="email" value="${contacts[i]['email']}" required>
-                        <input class="inputDesktop" id="edit-phone" type="tel"  value="${contacts[i]['phone']}" required pattern="[0-9]+">
+                        <input class="inputDesktop" id="edit-phone" type="number"  value="${contacts[i]['phone']}" required pattern="[0-9]+">
                             <div class="flex">
                                 <button type="button" onclick="deleteContact(${i});closeOverlay()" class="delete_btn">Delete</button>
                                 <button type="submit" class="save_btn">Save</button>
@@ -95,7 +95,7 @@ function renderEditContactMobileTemplate(i) {
     <form id="form_edit_contact_mobile" class="editContactBottomMobileDown" onsubmit="editContact(${i});hideMobileEditContactCard();return false;">
         <input class="inputMobile" id="edit-name" type="text" value="${contacts[i]['name']}" required pattern="[A-Z][a-zA-Z ]*">
         <input class="inputMobile" id="edit-email" type="email" value="${contacts[i]['email']}" required>
-        <input class="inputMobile" id="edit-phone" type="tel"  value="${contacts[i]['phone']}" required pattern="[0-9]+">
+        <input class="inputMobile" id="edit-phone" type="number"  value="${contacts[i]['phone']}" required pattern="[0-9]+">
             <div class="btn_mobile_edit_contact">
                 <button onclick="deleteContact(${i});closeOverlayMobile()" class="delete_btn">Delete</button>
                 <button type="submit" class="save_btn">Save</button>
