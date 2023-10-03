@@ -139,7 +139,7 @@ function deleteMemberEditTask(i, j) {
  */
 function addMemberEditTask(j) {
     let member = document.getElementById('assignedTo_form');
-    for (let i = 0; i < tasks[j]['assignedTo'].length; i++) {
+    for (let i = 0; i <= tasks[j]['assignedTo'].length; i++) {
         const assignedMember = memberAssignedTo[i];
 
         if (tasks[j]['assignedTo'].indexOf(member.value) == -1) {
