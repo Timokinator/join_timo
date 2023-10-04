@@ -383,13 +383,11 @@ function resetForm() {
  */
 async function addTaskAndCloseForm(status) {
     await addTask(status);
-    if (window.location['pathname'].includes('board') == true) {
-        initBoard();
-    };
     setTimeout(function () { closeAddTaskBoard() }, 200);
-    setTimeout(() => { //todo test function (nicht schön aber funktional)
-       location.reload(); 
-    }, 200);
+    if (window.location.pathname.includes('board')) {
+        location.reload();
+    };
+    
 };
 
 /**

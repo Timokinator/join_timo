@@ -104,13 +104,13 @@ function renderMemberEditTask(j) {
 
     if (tasks[j]['assignedTo'].length > 0) {
         deleteArea.innerHTML = /*html*/`
-            <span>Click to delete</span>
+            <span>Click to delete (one must remain!)</span>
         `;
     } else {
         deleteArea.innerHTML = '';
     };
 
-    for (let i = 0; i < tasks[j]['assignedTo'].length; i++) { //todo mit array
+    for (let i = 0; i < tasks[j]['assignedTo'].length; i++) {
         const member = tasks[j]['assignedTo'][i];
         content.innerHTML += templateMembersEditTask(i, j);
     };
@@ -124,10 +124,11 @@ function renderMemberEditTask(j) {
  * @param {number} j - The index of the task in the tasks array.
  */
 function deleteMemberEditTask(i, j) {
-    tasks[j]['assignedTo'].splice(i, 1);
-    tasks[j]['colors'].splice(i, 1);
-    tasks[j]['initials'].splice(i, 1);
-
+    if (tasks[j]['assignedTo'].length > 1) {
+        tasks[j]['assignedTo'].splice(i, 1);
+        tasks[j]['colors'].splice(i, 1);
+        tasks[j]['initials'].splice(i, 1);
+    };
     renderMemberEditTask(j);
     document.getElementById('assignedTo_form').value = '';
 };

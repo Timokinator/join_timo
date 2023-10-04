@@ -200,8 +200,22 @@ function renderContact(i) {
     document.getElementById("contactsboxbig").style.display = "flex";
     let contactsboxbig = document.getElementById('contactsboxbig');
     contactsboxbig.innerHTML = '';
-    contactsboxbig.innerHTML += renderContactTemplate (i);
-}
+    contactsboxbig.innerHTML += renderContactTemplate(i);
+    // Timo eingefügt
+    removeClassMarkedElement();
+    let idMarkedContact = document.getElementById(i);
+    idMarkedContact.classList.add('marked_contact');
+};
+
+function removeClassMarkedElement() {
+    for (let i = 0; i < sortedalphabetically.length; i++) {
+        const element = sortedalphabetically[i];
+        let id = document.getElementById(i);
+        id.classList.remove('marked_contact')
+    };
+};
+
+
 /**
  * Function renders a specific contact in the MOBILE detail view
  * @param {number} i - This is the index of an existing contact
@@ -209,12 +223,12 @@ function renderContact(i) {
 function renderContactMobile(i) {
     if (matchMedia('only screen and (max-width: 1050px)').matches) {
         document.getElementById("contacts-left").style.position = "fixed";
-        document.getElementById("addContactBtn").style.display = "none";
+        //document.getElementById("addContactBtn").style.display = "none";
         document.getElementById("contacts-right-mobile").style.display = "block";
     }
     let contactsboxbigmobile = document.getElementById('contactsboxbigmobile');
     contactsboxbigmobile.innerHTML = '';
-    contactsboxbigmobile.innerHTML += renderContactTemplateMobile (i);
+    contactsboxbigmobile.innerHTML += renderContactTemplateMobile(i);
 }
 /**
  * Asynchronous function renders all existing contacts
@@ -233,16 +247,16 @@ async function renderContacts() {
         let phone = element['phone'];
         let initial = initials[i];
         let color = element.color;
-    const firstLetter = name.charAt(0).toUpperCase();
-    if (!letters.includes(firstLetter)) {
-        letters.push(firstLetter);
-        createLetterContainer(contact, firstLetter);
-}
-    if (!color) {
-        color = assignRandomColorToDiv(i);
-        element.color = color;
-    }
-    createContactDiv(contact, i, firstLetter, color);
+        const firstLetter = name.charAt(0).toUpperCase();
+        if (!letters.includes(firstLetter)) {
+            letters.push(firstLetter);
+            createLetterContainer(contact, firstLetter);
+        }
+        if (!color) {
+            color = assignRandomColorToDiv(i);
+            element.color = color;
+        }
+        createContactDiv(contact, i, firstLetter, color);
     }
     await safeContacts();
 }
@@ -306,7 +320,7 @@ function renderEditContact(i) {
 function renderEditContactMobile(i) {
     editContactForm = document.getElementById('editContactForm_mobile');
     editContactForm.innerHTML = '';
-    editContactForm.innerHTML +=renderEditContactMobileTemplate(i);    
+    editContactForm.innerHTML += renderEditContactMobileTemplate(i);
 }
 /**
  * Function which deletes a specific contact in the array "contacts" at position [i].
@@ -332,7 +346,8 @@ function createdContactSuccessfully() {
     document.getElementById('success').style.display = '';
     document.getElementById('success').classList.add("animate-contact");
     setTimeout(() => {
-        document.getElementById('success').style.display = 'none';}, 2000);
+        document.getElementById('success').style.display = 'none';
+    }, 2000);
 }
 /**
  * Function shows a popup for a certain time "edited contact successfully"
@@ -340,7 +355,7 @@ function createdContactSuccessfully() {
 function editedContactSuccessfully() {
     document.getElementById('successEdit').style.display = '';
     document.getElementById('successEdit').classList.add("animate-contact");
-    setTimeout(() => {document.getElementById('successEdit').style.display = 'none';}, 2000);
+    setTimeout(() => { document.getElementById('successEdit').style.display = 'none'; }, 2000);
 }
 /**
  * Function shows a popup for a certain time "deleted contact successfully"
@@ -348,7 +363,7 @@ function editedContactSuccessfully() {
 function deletedContactSuccessfully() {
     document.getElementById('successDelete').style.display = '';
     document.getElementById('successDelete').classList.add("animate-contact");
-    setTimeout(() => {document.getElementById('successDelete').style.display = 'none';}, 2000);
+    setTimeout(() => { document.getElementById('successDelete').style.display = 'none'; }, 2000);
 }
 /**
  * Edit function Overwrites the values from the "contacts" array insofar as new data is entered
