@@ -45,11 +45,15 @@
                     <div>
                         <img onclick="hideAddContactCard()" class="close_symbol"
                             src="../assets/icons/icon_add_contact_X.svg">
-                        <form id="form_add_contact" class="addContactRight_right" onsubmit="addContact(); return false;">
-                            <input class="inputDesktop" id="name" type="text" placeholder="Name" required pattern="[A-Z][a-z]*"
-                            oninvalid="this.setCustomValidity('Must start with capital letter')" oninput="this.setCustomValidity(' ')">
+                        <form id="form_add_contact" class="addContactRight_right"
+                            onsubmit="addContact(); return false;">
+                            <input class="inputDesktop" id="name" type="text" placeholder="Name" required
+                                pattern="[A-Z][a-zA-Z ]*"
+                                title="Must start with capital letter, no special characters, no numbers"
+                                >
                             <input class="inputDesktop" id="email" type="email" placeholder="Email" required>
-                            <input class="inputDesktop" id="phone" type="number" placeholder="Phone" required pattern="[0-9]+">
+                            <input class="inputDesktop" id="phone" type="number" placeholder="Phone" required
+                                pattern="[0-9]+">
                             <div class="flex">
                                 <button onclick="hideAddContactCard()" type="button" class="cancel_btn">Cancel</button>
                                 <button type="submit" class="create_btn">Create contact</button>
@@ -78,11 +82,15 @@
                         <img class="addContactImg" src="../assets/img/logo_contact.svg">
                     </div>
                     <div>
-                        <form id="form_add_contact_mobile" class="addContactBottom" onsubmit="addContactMobile(); return false;">
-                            <input class="inputMobile" id="name_mobile" type="text" placeholder="Name" required pattern="[A-Z][a-z]*"
-                            oninvalid="this.setCustomValidity('Must start with capital letter')" oninput="this.setCustomValidity(' ')">
+                        <form id="form_add_contact_mobile" class="addContactBottom"
+                            onsubmit="addContactMobile(); return false;">
+                            <input class="inputMobile" id="name_mobile" type="text" placeholder="Name" required
+                                pattern="[A-Z][a-zA-Z ]*"
+                                title="Must start with capital letter, no special characters, no numbers"
+                                >
                             <input class="inputMobile" id="email_mobile" type="email" placeholder="Email" required>
-                            <input class="inputMobile" id="phone_mobile" type="number" placeholder="Phone" required pattern="[0-9]+">
+                            <input class="inputMobile" id="phone_mobile" type="number" placeholder="Phone" required
+                                pattern="[0-9]+">
 
 
                             <button type="submit" class="create_btn_mobile">Create contact<img

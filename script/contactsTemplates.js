@@ -2,7 +2,7 @@
  * Template for the Function which returns HTML Block to render specific Contact
  * @param {number} i - This is the index of an existing contact
  */
-function renderContactTemplate (i) {
+function renderContactTemplate(i) {
     return /*html*/`
     <div class="contact_big">
     <div class="flex align fdr">
@@ -32,7 +32,7 @@ function renderContactTemplate (i) {
  * Template for the Function which returns HTML Block to render specific Contact of the mobile view
  * @param {number} i - This is the index of an existing contact
  */
-function renderContactTemplateMobile (i) {
+function renderContactTemplateMobile(i) {
     return /*html*/`
     <div class="contact_big_mobile flex juststart fdc">
             <div class="flex align fdr">
@@ -69,7 +69,9 @@ function renderEditContactTemplate(i) {
     return /*html*/`
     <img onclick="hideEditContactCard();closeOverlay();" class="close_symbol_edit" src="../assets/icons/icon_add_contact_X.svg">
                     <form id="form_edit_contact" class="editContactRight_right" onsubmit="editContact(${i});closeOverlay();return false;">
-                        <input class="inputDesktop" id="edit-name" type="text" value="${contacts[i]['name']}" required pattern="[A-Z][a-z]*">
+                        <input class="inputDesktop" id="edit-name" type="text" value="${contacts[i]['name']}" required pattern="[A-Z][a-zA-Z ]*"
+                        title="Must start with capital letter, no special characters, no numbers"
+                        >
                         <input class="inputDesktop" id="edit-email" type="email" value="${contacts[i]['email']}" required>
                         <input class="inputDesktop" id="edit-phone" type="number"  value="${contacts[i]['phone']}" required pattern="[0-9]+">
                             <div class="flex">
@@ -93,7 +95,9 @@ function renderEditContactMobileTemplate(i) {
     editContactRight_left.innerHTML += `<div style="background-color:${contacts[i]['color']}" id="usercircle${i}" class="usercircle_edit_contact addContactImg">${initials[i]}</div>`;
     return /*html*/`
     <form id="form_edit_contact_mobile" class="editContactBottomMobileDown" onsubmit="editContact(${i});hideMobileEditContactCard();return false;">
-        <input class="inputMobile" id="edit-name" type="text" value="${contacts[i]['name']}" required pattern="[A-Z][a-z]*">
+        <input class="inputMobile" id="edit-name" type="text" value="${contacts[i]['name']}" required pattern="[A-Z][a-zA-Z ]*"
+        title="Must start with capital letter, no special characters, no numbers"
+        >
         <input class="inputMobile" id="edit-email" type="email" value="${contacts[i]['email']}" required>
         <input class="inputMobile" id="edit-phone" type="number"  value="${contacts[i]['phone']}" required pattern="[0-9]+">
             <div class="btn_mobile_edit_contact">
@@ -110,7 +114,7 @@ function renderEditContactMobileTemplate(i) {
 /**
  * Template for Asynchronous function renders all existing contacts
  */
-function renderContactsTemplate (i) {
+function renderContactsTemplate(i) {
     let color = sortedalphabetically[i].color;
     if (!color) {
         color = assignRandomColorToDiv(i);
