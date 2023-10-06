@@ -490,4 +490,5 @@ function addNewTaskFromContacts(i, stati) {
     pushMemberToArrayAssignedTo();
     addNewTask(stati);
     renderMembers();
+    document.getElementById('assignedTo_form').value = contacts[i]['name'];
 };
