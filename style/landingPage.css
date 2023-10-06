@@ -312,6 +312,9 @@ checkbox {
     scale: 1.03;
 }
 
+.no-underline {
+    text-decoration: none;
+}
 
 
 

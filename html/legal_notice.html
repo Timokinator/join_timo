@@ -13,7 +13,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="includeHtml(); loadUserData()">
+<body onload="includeHtml(); loadUserData(); markShortcut('navbar_legal', 'navbar_legal_mobile')">
     <div w3-include-html="frame.html"></div>
     <div class="container-content">
         <a class="arrow-back" href="javascript:history.back()">
@@ -26,6 +26,9 @@
                     Sie wurde ausschließlich zu Lehrzwecken erstellt.
                 </p>
 
+                <!--Nur im Code um Funktion markShortcut() eine ID für mobile mitgeben zu können und keine Fehlermeldung zu bekommen -->
+                <p id="navbar_legal_mobile"></p>
+                <!-- Ende -->
 
                 <p>Angaben gemäß § 5 TMG</p>
                 <p>Max Muster <br>

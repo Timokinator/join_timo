@@ -1,3 +1,7 @@
+ids_navbar = ['navbar_summary', 'navbar_board', 'navbar_add_task', 'navbar_contacts', 'navbar_legal', 'navbar_summary_mobile', 'navbar_board_mobile', 'navbar_add_task_mobile', 'navbar_contacts_mobile'];
+ids_navbar_mobile = ['navbar_summary_mobile', 'navbar_board_mobile', 'navbar_add_task_mobile', 'navbar_contacts_mobile'];
+
+
 /**
  * Asynchronous function to include HTML content into specific elements that have the "w3-include-html" attribute.
  * This function fetches external HTML files and inserts their content into the selected elements.
@@ -47,7 +51,7 @@ function openSubmenu(resolution) {
     if (resolution == 'desktop') {
         // If the resolution is "desktop", display the desktop submenu.
         content.innerHTML = renderSubmenuDesktop();
-        
+
     } else if (resolution == 'mobile') {
         // If the resolution is "mobile", display the mobile submenu and close it after 2.5 seconds.
         content.innerHTML = renderSubmenuMobile();
@@ -92,4 +96,27 @@ function renderSubmenuMobile() {
 function closeSubmenu() {
     let content = document.getElementById('container_submenu_user');
     content.classList.add('d-none');
+};
+
+
+function markShortcut(id, id_mobile) {
+    setTimeout(() => {
+        demarkShortcut();
+        document.getElementById(id).classList.add("sidebar-marked");
+        document.getElementById(id_mobile).classList.add("container-mobile-links-marked");
+    }, 100);
+};
+
+
+function demarkShortcut() {
+    for (let i = 0; i < ids_navbar.length; i++) {
+        const id = ids_navbar[i];
+        const element = document.getElementById(id);
+        if (element.classList.contains('sidebar-marked')) {
+            element.classList.remove('sidebar-marked')
+        };
+        if (element.classList.contains('container-mobile-links-marked')) {
+            element.classList.remove('container-mobile-links-marked')
+        };
+    };
 };

@@ -64,6 +64,17 @@ body {
     width: 100%;
 }
 
+.sidebar-marked {
+    background-color: #091931;
+    width: 100%;
+}
+
+.container-mobile-links-marked {
+    background-color: #091931;
+}
+
+
+
 .sidebar-text {
     color: #CDCDCD;
     font-size: 16px;
