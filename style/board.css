@@ -703,6 +703,7 @@ header {
     .container-single-tasks-board {
         padding-top: 32px;
         align-items: flex-start;
+        min-height: 0;
     }
 
     .container-formular-task-on-board {

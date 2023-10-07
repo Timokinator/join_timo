@@ -233,7 +233,7 @@ function templateFormAddTaskBoard(stati) {
 
                 <div id="prio_btn_urgent" class="prio-btn-add-task" onclick="setPrioValue('urgent')">
                     <span class="text-btn-prio-add-task">Urgent</span>
-                    <img src="../assets/icons/icon_prio_high.svg" alt="">
+                    <img src="../assets/icons/icon_prio_urgent.svg" alt="">
                 </div>
 
                 <div id="prio_btn_medium" class="prio-btn-add-task prio-selected" onclick="setPrioValue('medium')">
@@ -414,7 +414,7 @@ function templateEditTask(j) {
                             <!-- Urgent priority button -->
                             <div id="prio_btn_urgent" class="prio-btn-add-task" onclick="setPrioValueEditTask(${j},'urgent')">
                                 <span class="text-btn-prio-add-task">Urgent</span>
-                                <img src="../assets/icons/icon_prio_high.svg" alt="">
+                                <img src="../assets/icons/icon_prio_urgent.svg" alt="">
                             </div>
 
                             <!-- Medium priority button -->
@@ -480,7 +480,7 @@ function templateDetailTaskPrioUrgent(j) {
     return /*html*/`
     <div class="border-urgent">
         <span>${tasks[j]['prio'].slice(0, 1).toUpperCase()}${tasks[j]['prio'].slice(1)}</span>
-        <img src="../assets/icons/icon_prio_high.svg" alt="">
+        <img src="../assets/icons/icon_prio_urgent.svg" alt="">
     </div>
     `;
 };

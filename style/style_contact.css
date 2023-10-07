@@ -121,7 +121,7 @@ html {
 .contacts-left {
     display: flex;
     justify-content: center;
-    width: 25vw;
+    width: 30vw;
     height: 100%;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     overflow-y: scroll;
@@ -151,6 +151,13 @@ html {
     left: 0px;
     margin-top: 32px;
 }
+
+.newContactContainermobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .newContact {
     display: flex;
@@ -194,6 +201,7 @@ html {
     height: 53px;
     background: #2A3647;
     border-radius: 8px;
+    margin: 8px 16px;
 }
 
 .contacts-big {
@@ -244,7 +252,7 @@ html {
 
 .contact_small {
     display: block;
-    width: 357px;
+    /*width: 357px; */
 
 }
 
@@ -1222,7 +1230,7 @@ hr {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100vw;
+        width: 100%;
         height: 100%;
         left: 0;
     }
@@ -1243,10 +1251,12 @@ hr {
         align-items: flex-start;
     }
 
+    /*
     .newContactMobile {
         margin-top: 16px;
         margin-left: 100px;
     }
+    */
 
     .subHeader {
         flex-direction: column;
@@ -1294,6 +1304,18 @@ hr {
     .addContactImg {
         right: 100px;
     }
+
+    .FS16-400 {
+        font-size: 12px;
+
+    }
+
+    .FS21-400 {
+        font-size: 16px;
+
+    }
+
+
 }
 
 @media only screen and (max-width: 320px) {
@@ -1332,4 +1354,11 @@ hr {
         height: 43.65px;
         width: 43.65px;
     }
+}
+
+@media only screen and (min-height: 500px) {
+    .contact_big_container {
+        min-height: 333px;
+    }
+
 }

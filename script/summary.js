@@ -41,6 +41,12 @@ let tasksUrgent = [];
 let tasksDates = [];
 
 /**
+ * Array to store unique logged-in users.
+ * @type {Array}
+ */
+let newUser = [];
+
+/**
  * Redirects to the board HTML page.
  */
 function linkToBoardHTML() {
@@ -179,7 +185,6 @@ function implementCurrentTime() {
     let timeBox = document.querySelector('.summary-good-morning');
     let today = new Date();
     let dateHours = today.getHours();
-
     if (dateHours >= 0 && dateHours < 12) {
         timeBox.innerHTML = 'Good Morning, ';
     }
@@ -193,23 +198,15 @@ function implementCurrentTime() {
 
 
 /**
- * Array to store unique logged-in users.
- * @type {Array}
- */
-let newUser = [];
-
-/**
  * Loads the logged-in user's data and updates the user box.
  */
 async function loadLoagedInUser() {
     let currentUser = logedInUser['name'];
     if (!newUser.includes(currentUser)) {
         newUser.push(currentUser);
-    }
+    };
     let logedInUser = currentUser[0]['name'];
-
     let userBox = document.getElementById('summary_username');
-
     if (logedInUser) {
         userBox.innerHTML = capitalizeFirstLetter(logedInUser);
     } else {
@@ -224,7 +221,6 @@ async function loadLoagedInUser() {
 function checkAndSortTasks() {
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-
         if (task['status'] == 'progress') {
             tasksInProgress.push(task);
         } else if (task['status'] == 'awaiting') {
@@ -234,11 +230,9 @@ function checkAndSortTasks() {
         } else if (task['status'] == 'done') {
             tasksDone.push(task);
         };
-        
         if (task['prio'] == 'urgent') {
             tasksUrgent.push(task);
         };
-
         tasksDates.push(task['dueDate']);
         tasksDates.sort();
     };

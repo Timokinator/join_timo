@@ -107,36 +107,82 @@ function renderTasksBoardWithoutSearch(content, status) {
 async function changeStatusClick(j, direction) {
     let oldStatus = tasks[j]['status'];
     let newStatus;
-
     if (oldStatus == 'todo') {
-        if (direction == 'up') {
-            newStatus = 'todo';
-        } else {
-            newStatus = 'progress';
-        }
+        newStatus = changeStatusFromTodo(direction);
     } else if (oldStatus == 'progress') {
-        if (direction == 'up') {
-            newStatus = 'todo';
-        } else {
-            newStatus = 'awaiting';
-        }
+        newStatus = changeStatusFromProgress(direction);
     } else if (oldStatus == 'awaiting') {
-        if (direction == 'up') {
-            newStatus = 'progress';
-        } else {
-            newStatus = 'done';
-        }
+        newStatus = changeStatusFromAwaiting(direction);
     } else if (oldStatus == 'done') {
-        if (direction == 'up') {
-            newStatus = 'awaiting';
-        } else {
-            newStatus = 'done'
-        }
+        newStatus = changeStatusFromDone(direction);
     };
-
     tasks[j]['status'] = newStatus;
     await safeTasks(); // Save the updated tasks to storage.
     initBoard(); // Reinitialize the board to reflect the changes.
+};
+
+
+/**
+ * Ändert den Status eines Tasks von "To-Do" zu "In Bearbeitung" oder umgekehrt, abhängig von der Richtung.
+ * @param {string} direction - Die Richtung, in die der Status geändert werden soll ('up' für "To-Do" zu "In Bearbeitung", 'down' für "In Bearbeitung" zu "To-Do").
+ * @returns {string} Der neue Status des Tasks ('todo' oder 'progress').
+ */
+function changeStatusFromTodo(direction) {
+    let newStatus;
+    if (direction == 'up') {
+        newStatus = 'progress';
+    } else {
+        newStatus = 'todo';
+    };
+    return newStatus;
+};
+
+
+/**
+ * Ändert den Status eines Tasks von "In Bearbeitung" zu "Warten" oder umgekehrt, abhängig von der Richtung.
+ * @param {string} direction - Die Richtung, in die der Status geändert werden soll ('up' für "In Bearbeitung" zu "Warten", 'down' für "Warten" zu "In Bearbeitung").
+ * @returns {string} Der neue Status des Tasks ('progress' oder 'awaiting').
+ */
+function changeStatusFromProgress(direction) {
+    let newStatus;
+    if (direction == 'up') {
+        newStatus = 'awaiting';
+    } else {
+        newStatus = 'progress';
+    };
+    return newStatus;
+};
+
+
+/**
+ * Ändert den Status eines Tasks von "Warten" zu "Erledigt" oder umgekehrt, abhängig von der Richtung.
+ * @param {string} direction - Die Richtung, in die der Status geändert werden soll ('up' für "Warten" zu "Erledigt", 'down' für "Erledigt" zu "Warten").
+ * @returns {string} Der neue Status des Tasks ('awaiting' oder 'done').
+ */
+function changeStatusFromAwaiting(direction) {
+    let newStatus;
+    if (direction == 'up') {
+        newStatus = 'done';
+    } else {
+        newStatus = 'awaiting';
+    };
+    return newStatus;
+};
+
+
+/**
+ * Ändert den Status eines Tasks von "Erledigt" zu "Warten" oder umgekehrt, abhängig von der Richtung.
+ * @param {string} direction - Die Richtung, in die der Status geändert werden soll ('up' für "Erledigt" zu "Warten", 'down' für "Warten" zu "Erledigt").
+ * @returns {string} Der neue Status des Tasks ('done' oder 'awaiting').
+ */
+function changeStatusFromDone(direction) {
+    let newStatus;
+    if (direction == 'up') {
+        newStatus = 'awaiting';
+    } else {
+        newStatus = 'done';
+    };
+    return newStatus;
 };
 
 
@@ -162,28 +208,30 @@ function addMemberToSingleTask(task, j) {
 
 
 /**
- * Adds priority information to a single task on the board.
- *
- * @param {object} task - The task object to which priority will be added.
- * @param {number} j - The index of the task in the tasks array.
+ * Fügt eine Prioritätsanzeige zu einer einzelnen Aufgabe hinzu.
+ * @param {Object} task - Die Aufgabe, der die Prioritätsanzeige hinzugefügt werden soll.
+ * @param {number} j - Ein numerischer Wert zur Identifizierung der Aufgabe.
  */
 function addPrioToSingleTask(task, j) {
+    /**
+     * Das HTML-Element, in das die Prioritätsanzeige eingefügt wird.
+     * @type {HTMLElement}
+     */
     let content = document.getElementById('single-task-prio' + j);
+
+    /**
+     * Die Priorität der Aufgabe.
+     * @type {string}
+     */
+    let prio = task['prio'];
+
+    // Lösche den aktuellen Inhalt des Elements
     content.innerHTML = '';
-    // Check the priority of the task and add the corresponding icon.
-    if (task['prio'] == 'urgent') {
-        content.innerHTML += /*html*/`
-            <img src="../assets/icons/icon_prio_high.svg" alt="">
-        `;
-    } else if (task['prio'] == 'medium') {
-        content.innerHTML += /*html*/`
-            <img src="../assets/icons/icon_prio_medium.svg" alt="">
-        `;
-    } else if (task['prio'] == 'low') {
-        content.innerHTML += /*html*/`
-            <img src="../assets/icons/icon_prio_low.svg" alt="">
-        `;
-    };
+
+    // Füge das Prioritätsbild basierend auf der Priorität der Aufgabe hinzu
+    content.innerHTML += /*html*/`
+        <img src="../assets/icons/icon_prio_${prio}.svg" alt="">
+    `;
 };
 
 
@@ -387,7 +435,7 @@ async function addTaskAndCloseForm(status) {
     if (window.location.pathname.includes('board')) {
         location.reload();
     };
-    
+
 };
 
 /**

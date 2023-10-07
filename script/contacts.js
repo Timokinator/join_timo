@@ -13,7 +13,8 @@ async function init() {
     renderContacts();
     measureBrowserWidth();
     loadUserData();
-}
+};
+
 /**
  * Asynchronous function that refreshes the page
  */
@@ -27,7 +28,8 @@ async function refresh() {
     await safeContacts();
     await loadContacts();
     renderContacts();
-}
+};
+
 /**
  * Function to push the entered contacts into the "contacts" array
  * @param {string} name - This is the name of an existing contact
@@ -45,21 +47,24 @@ function pushToArray(name, email, phone, color) {
         }
     );
     safeContacts();
-}
+};
+
 /**
  * Asynchronous function to save all contacts from array "contacts" to remote storage
  */
 async function safeContacts() {
     await setItem('contact_array', JSON.stringify(contacts));
     await setItem('initials_array', JSON.stringify(initials));
-}
+};
+
 /**
  * Asynchronous function to load all contacts from the remote storage and assign them to the "contacts" array
  */
 async function loadContacts() {
     contacts = JSON.parse(await getItem('contact_array'));
     initials = JSON.parse(await getItem('initials_array'));
-}
+};
+
 /**
  * Asynchronous function to add a new contact to the "contacts" array
  */
@@ -67,19 +72,19 @@ async function addContact() {
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
     let phone = document.getElementById('phone').value;
-
     sortedalphabetically = [];
     if (name != '' && email != '' && phone != '') {
         pushToArray(name, email, phone);
         await safeContacts();
         createdContactSuccessfully();
         hideAddContactCard();
-    }
+    };
     await safeContacts();
     document.getElementById('form_add_contact').reset();
     // safeContacts();
     await refresh();
-}
+};
+
 /**
  * Asynchronous function to add a new contact from the Mobile Version to the "contacts" array
  */
@@ -87,32 +92,33 @@ async function addContactMobile() {
     let name = document.getElementById('name_mobile').value;
     let email = document.getElementById('email_mobile').value;
     let phone = document.getElementById('phone_mobile').value;
-
     sortedalphabetically = [];
-
     if (name != '' && email != '' && phone != '') {
         pushToArray(name, email, phone);
         await safeContacts();
         createdContactSuccessfully();
         hideMobileAddContactCard();
-    }
+    };
     await safeContacts();
     document.getElementById('form_add_contact_mobile').reset();
     await refresh();
-}
+};
+
 /**
  * Function hides "Contact Container"
  */
 function hideAddContactCard() {
     document.getElementById("overlay_add_contact").style.display = "none";
-}
+};
+
 /**
  * Function hides "MOBILE Contact Container"
  */
 function hideMobileAddContactCard() {
     document.getElementById("overlay_add_contact_mobile").style.display = "none";
     document.getElementById("contacts-left").style.position = "initial";
-}
+};
+
 /**
  * Function shows "Add Contact Container"
  */
@@ -120,7 +126,8 @@ function showAddContactCard() {
     document.getElementById('form_add_contact').reset();
     document.getElementById("addContactCard").style.display = "flex";
     document.getElementById("overlay_add_contact").style.display = "flex";
-}
+};
+
 /**
  * Function shows "MOBILE Contact Container"
  */
@@ -130,15 +137,17 @@ function showMobileAddContactCard() {
     document.getElementById("overlay_add_contact_mobile").style.display = "flex";
     if (matchMedia('only screen and (max-width: 1050px)').matches) {
         document.getElementById("contacts-left").style.position = "fixed";
-    }
-}
+    };
+};
+
 /**
  * Function hides "Edit Contact Container"
  */
 function hideEditContactCard() {
     document.getElementById("editContactCard").style.display = "none";
     document.getElementById("overlay_edit_contact").style.display = "none";
-}
+};
+
 /**
  * Function shows "Edit Contact Container"
  * @param {number} i - This is the index of an existing contact
@@ -148,9 +157,10 @@ function showEditContactCard(i) {
     document.getElementById("editContactCard").style.display = "flex";
     if (matchMedia('only screen and (max-width: 1050px)').matches) {
         document.getElementById("contacts-left").style.position = "fixed";
-    }
+    };
     renderEditContact(i);
-}
+};
+
 /**
  * Function hides MOBILE Version of "Edit Contact Container"
  */
@@ -158,7 +168,8 @@ function hideMobileEditContactCard() {
     document.getElementById("editContactCard_mobile").style.display = "none";
     document.getElementById("overlay_edit_contact_mobile").style.display = "none";
     document.getElementById("contacts-left").style.position = "initial";
-}
+};
+
 /**
  * Function shows MOBILE Version of "Edit Contact Container"
  * @param {number} i - This is the index of an existing contact
@@ -167,14 +178,16 @@ function showMobileEditContactCard(i) {
     document.getElementById("overlay_edit_contact_mobile").style.display = "flex";
     document.getElementById("editContactCard_mobile").style.display = "flex";
     renderEditContactMobile(i);
-}
+};
+
 /**
  * Function closes Overlay from "ADD-/EDIT Contact Container"
  */
 function closeOverlay() {
     document.getElementById("overlay_add_contact").style.display = "none";
     document.getElementById("overlay_edit_contact").style.display = "none";
-}
+};
+
 /**
  * Function closes Overlay from MOBILE version of "ADD-/EDIT Contact Container"
  */
@@ -182,7 +195,8 @@ function closeOverlayMobile() {
     document.getElementById("overlay_add_contact_mobile").style.display = "none";
     document.getElementById("overlay_edit_contact_mobile").style.display = "none";
     document.getElementById("contacts-left").style.position = "initial";
-}
+};
+
 /**
  * Function whiches hides mobile detail view of a contact
  */
@@ -191,7 +205,8 @@ function hideMobileContactView() {
     document.getElementById("contactsboxsmall").style.display = "block";
     document.getElementById("contacts-left-wrapper").style.position = "initial";
     document.getElementById("contacts-left").style.position = "initial";
-}
+};
+
 /**
  * Function renders a specific contact in the detail view
  * @param {number} i - This is the index of an existing contact
@@ -207,14 +222,16 @@ function renderContact(i) {
     idMarkedContact.classList.add('marked_contact');
 };
 
+/**
+ * Entfernt die CSS-Klasse 'marked_contact' von allen Elementen in der 'sortedalphabetically'-Liste.
+ */
 function removeClassMarkedElement() {
     for (let i = 0; i < sortedalphabetically.length; i++) {
         const element = sortedalphabetically[i];
         let id = document.getElementById(i);
-        id.classList.remove('marked_contact')
+        id.classList.remove('marked_contact');
     };
 };
-
 
 /**
  * Function renders a specific contact in the MOBILE detail view
@@ -225,11 +242,12 @@ function renderContactMobile(i) {
         document.getElementById("contacts-left").style.position = "fixed";
         //document.getElementById("addContactBtn").style.display = "none";
         document.getElementById("contacts-right-mobile").style.display = "block";
-    }
+    };
     let contactsboxbigmobile = document.getElementById('contactsboxbigmobile');
     contactsboxbigmobile.innerHTML = '';
     contactsboxbigmobile.innerHTML += renderContactTemplateMobile(i);
-}
+};
+
 /**
  * Asynchronous function renders all existing contacts
  */
@@ -243,23 +261,21 @@ async function renderContacts() {
     for (let i = 0; i < sortedalphabetically.length; i++) {
         const element = sortedalphabetically[i];
         let name = element['name'];
-        let email = element['email'];
-        let phone = element['phone'];
-        let initial = initials[i];
         let color = element.color;
         const firstLetter = name.charAt(0).toUpperCase();
         if (!letters.includes(firstLetter)) {
             letters.push(firstLetter);
             createLetterContainer(contact, firstLetter);
-        }
+        };
         if (!color) {
             color = assignRandomColorToDiv(i);
             element.color = color;
-        }
+        };
         createContactDiv(contact, i, firstLetter, color);
-    }
+    };
     await safeContacts();
-}
+};
+
 /**
    * Function to create the letter container
    * @param {Array} contact - This parameter is a DOM element that is the parent element to which to add the letter container.
@@ -270,17 +286,16 @@ function createLetterContainer(contact, firstLetter) {
     const container = document.createElement('div');
     container.id = containerId;
     contact.appendChild(container);
-
     const letterContainer = document.createElement('div');
     letterContainer.className = 'letter-container';
     letterContainer.innerHTML = firstLetter;
     container.appendChild(letterContainer);
-
     const letterdevide = document.createElement('div');
     letterdevide.className = 'letter-devide';
     letterdevide.innerHTML = '<hr>';
     container.appendChild(letterdevide);
-}
+};
+
 /**
  * Creates the contact div and appends it to the letter container.
  *
@@ -293,7 +308,6 @@ function createLetterContainer(contact, firstLetter) {
 function createContactDiv(contact, i, firstLetter, color) {
     const containerId = `letter${firstLetter}`;
     const container = document.getElementById(containerId);
-
     const contactDiv = document.createElement('div');
     contactDiv.onclick = function () {
         renderContact(i), renderContactMobile(i);
@@ -303,7 +317,8 @@ function createContactDiv(contact, i, firstLetter, color) {
     contactDiv.innerHTML = renderContactsTemplate(i);
     container.appendChild(contactDiv);
     container.classList.add('letterbox');
-}
+};
+
 /**
  * Function renders the "Edit Contact" container
  * @param {number} i - This is the index of an existing contact
@@ -312,7 +327,8 @@ function renderEditContact(i) {
     editContactForm = document.getElementById('editContactForm');
     editContactForm.innerHTML = '';
     editContactForm.innerHTML += renderEditContactTemplate(i);
-}
+};
+
 /**
  *  Function renders the MOBILE "Edit Contact" container
  * @param {number} i - This is the index of an existing contact
@@ -321,7 +337,8 @@ function renderEditContactMobile(i) {
     editContactForm = document.getElementById('editContactForm_mobile');
     editContactForm.innerHTML = '';
     editContactForm.innerHTML += renderEditContactMobileTemplate(i);
-}
+};
+
 /**
  * Function which deletes a specific contact in the array "contacts" at position [i].
  * @param {number} i - This is the index of an existing contact
@@ -332,12 +349,13 @@ async function deleteContact(i) {
         deletedContactSuccessfully();
     } else {
         alert("For Testreasons we can´t delete a contact if there is only 1 or less available.");
-    }
+    };
     sortedalphabetically = [];
     await refresh();
     hideEditContactCard();
     hideMobileContactView();
-}
+};
+
 /**
  * Function shows a popup for a certain time "created contact successfully"
  */
@@ -348,7 +366,8 @@ function createdContactSuccessfully() {
     setTimeout(() => {
         document.getElementById('success').style.display = 'none';
     }, 2000);
-}
+};
+
 /**
  * Function shows a popup for a certain time "edited contact successfully"
  */
@@ -356,7 +375,8 @@ function editedContactSuccessfully() {
     document.getElementById('successEdit').style.display = '';
     document.getElementById('successEdit').classList.add("animate-contact");
     setTimeout(() => { document.getElementById('successEdit').style.display = 'none'; }, 2000);
-}
+};
+
 /**
  * Function shows a popup for a certain time "deleted contact successfully"
  */
@@ -364,7 +384,8 @@ function deletedContactSuccessfully() {
     document.getElementById('successDelete').style.display = '';
     document.getElementById('successDelete').classList.add("animate-contact");
     setTimeout(() => { document.getElementById('successDelete').style.display = 'none'; }, 2000);
-}
+};
+
 /**
  * Edit function Overwrites the values from the "contacts" array insofar as new data is entered
  * @param {number} i - This is the index of an existing contact 
@@ -385,7 +406,8 @@ async function editContact(i) {
     await refresh();
     hideMobileContactView();
     editedContactSuccessfully();
-}
+};
+
 /**
  * Extracts the uppercase initials from the array "contacts"['name']
  * @param {Array} sortedContacts - This is the sorted Contacts Array
@@ -398,7 +420,8 @@ async function extractInitials(sortedContacts) {
         return initialsString;
     });
     await safeContacts(); //tik zugefügt
-}
+};
+
 /**
  * Function assignes random Color to Usercircle
  * @param {number} i - This is the index of an existing contact 
@@ -415,7 +438,7 @@ function assignRandomColorToDiv(i) {
         var color = "hsl(" + hue + ", " + saturation + "%, " + lightness + "%)";
         // Update the corresponding contact object in the "contacts" array with the color
         contacts[i].color = color;
-    }
+    };
     // Return the assigned color
     safeContacts(); //tik hochgezogen
     return contacts[i].color;
@@ -444,7 +467,8 @@ function sortContactsAlphabetically(contacts) {
         sortedalphabetically.push(contact);
     });
     return sortedalphabetically;
-}
+};
+
 /**
  * Function which continuously measures the browser width and fades in and out elements from 1050px wide
  */
@@ -453,25 +477,40 @@ function measureBrowserWidth() {
     function checkWidth() {
         const browserWidth = window.innerWidth;
         if (browserWidth >= maxWidth) {
-            hideMobileAddContactCard();
-            hideMobileEditContactCard();
-            hideMobileContactView();
-            document.getElementById("contacts-right-wrapper").style.display = "initial";
-        }
+            hideMobileContainers();
+        };
         if (browserWidth <= maxWidth) {
-            hideAddContactCard();
-            hideEditContactCard();
-            document.getElementById("contacts-right-wrapper").style.display = "none";
-        }
-    }
+            hideNormalContainers();
+        };
+    };
     // Function to initialize the check and continuous monitoring
     function initWidthMonitoring() {
         checkWidth();
         window.addEventListener('resize', checkWidth);
-    }
+    };
     // Start monitoring the browser width
     initWidthMonitoring();
-}
+};
+
+/**
+ * Versteckt mobile Container und zeigt den Standardkontaktcontainer an.
+ */
+function hideMobileContainers() {
+    hideMobileAddContactCard();
+    hideMobileEditContactCard();
+    hideMobileContactView();
+    document.getElementById("contacts-right-wrapper").style.display = "initial";
+};
+
+/**
+ * Versteckt Standardcontainer für Kontakte.
+ */
+function hideNormalContainers() {
+    hideAddContactCard();
+    hideEditContactCard();
+    document.getElementById("contacts-right-wrapper").style.display = "none";
+};
+
 /**
  * Function wich let you add task from rendered contacts
  * @param {number} i - This is the index of an existing contact 

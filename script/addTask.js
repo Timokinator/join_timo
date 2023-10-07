@@ -257,7 +257,6 @@ async function addTask(setStatus) {
  */
 function addMember() {
     let member = document.getElementById('assignedTo_form');
-
     for (let i = 0; i < memberAssignedTo.length; i++) {
         const assignedMember = memberAssignedTo[i];
 
@@ -278,7 +277,6 @@ function renderMembers() {
     let content = document.getElementById('selected_members_add_task');
     let deleteArea = document.getElementById('click_to_delete_text');
     content.innerHTML = '';
-
     if (assignedTo.length > 0) {
         deleteArea.innerHTML = /*html*/`
             <span>Click to delete</span>
@@ -286,7 +284,6 @@ function renderMembers() {
     } else {
         deleteArea.innerHTML = '';
     };
-
     for (let i = 0; i < assignedTo.length; i++) {
         const member = assignedTo[i];
         content.innerHTML += templateMembers(i);

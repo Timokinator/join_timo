@@ -341,7 +341,7 @@ option {
     }
 }
 
-@media (max-width: 381px) {
+@media (max-width: 393px) {
     .btn-container-add-task {
         top: -5px;
         right: 56px;

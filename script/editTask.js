@@ -36,7 +36,6 @@ async function editTask(j) {
 function loadSubtasksEditTask(j) {
     let content = document.getElementById('container_subtasks');
     content.innerHTML = '';
-
     for (let i = 0; i < tasks[j]['subtasks'].length; i++) {
         const subtask = tasks[j]['subtasks'][i];
         content.innerHTML += templateSubtasksEditTask(j, i);
@@ -74,7 +73,6 @@ function addSubtaskEditTask(j) {
 function renderSubtasksEditTask(j) {
     let content = document.getElementById('container_subtasks');
     content.innerHTML = '';
-
     for (let i = 0; i < tasks[j]['subtasks'].length; i++) {
         const subtask = tasks[j]['subtasks'][i];
         content.innerHTML += templateSubtasksEditTask(j, i);
@@ -101,7 +99,6 @@ function renderMemberEditTask(j) {
     let content = document.getElementById('selected_members_add_task');
     let deleteArea = document.getElementById('click_to_delete_text');
     content.innerHTML = '';
-
     if (tasks[j]['assignedTo'].length > 0) {
         deleteArea.innerHTML = /*html*/`
             <span>Click to delete (one must remain!)</span>
@@ -109,7 +106,6 @@ function renderMemberEditTask(j) {
     } else {
         deleteArea.innerHTML = '';
     };
-
     for (let i = 0; i < tasks[j]['assignedTo'].length; i++) {
         const member = tasks[j]['assignedTo'][i];
         content.innerHTML += templateMembersEditTask(i, j);
@@ -187,14 +183,11 @@ async function safeChangesEditTask(j) {
     let description = document.getElementById('description_form');
     let dueDate = document.getElementById('dueDate_form');
     let title = document.getElementById('title_form');
-
     tasks[j]['category'] = category.value;
     tasks[j]['description'] = description.value;
     tasks[j]['dueDate'] = dueDate.value;
     tasks[j]['title'] = title.value;
-
     await safeTasks();
-
     closeEditTask();
     initBoard();
 };

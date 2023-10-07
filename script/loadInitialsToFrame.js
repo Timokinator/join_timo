@@ -1,7 +1,12 @@
 let logedInUserInitials = [];
-
 let currenrUserInitials = [];
 
+/**
+ * Lädt die Initialen des aktuellen Benutzers, sofern sie in der lokalen Speicherung gespeichert sind.
+ * Wenn Initialen vorhanden sind, wird die Funktion `loadUserInitials2` aufgerufen.
+ * @async
+ * @throws {Error} Ein Fehler wird ausgelöst, wenn beim Laden der Initialen ein Fehler auftritt.
+ */
 async function loadInitials() {
     try {
         const user = await getItem('user');
@@ -22,7 +27,8 @@ async function loadInitials() {
  */
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
+
 
 /**
  * Loads the logged-in user's data and displays the username on the summary view.
@@ -96,7 +102,6 @@ async function loadUserData() {
     let userBox = document.querySelector('.userInitials');
     let userMobileBox = document.querySelector('.userInitialsMobile');
     let box = document.getElementById('summary_username');
-
     if (currentUser) {
         userBox.innerHTML = capitalizeFirstLetter(currentUser);
         userMobileBox.innerHTML = capitalizeFirstLetter(currentUser);
@@ -107,7 +112,6 @@ async function loadUserData() {
         userBox.innerHTML = 'G';
         userMobileBox.innerHTML = 'G';
     };
-
     if (currentUser != null) {
         getInitials(currentUser);
     };

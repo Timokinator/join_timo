@@ -1,5 +1,19 @@
-ids_navbar = ['navbar_summary', 'navbar_board', 'navbar_add_task', 'navbar_contacts', 'navbar_legal', 'navbar_summary_mobile', 'navbar_board_mobile', 'navbar_add_task_mobile', 'navbar_contacts_mobile'];
-ids_navbar_mobile = ['navbar_summary_mobile', 'navbar_board_mobile', 'navbar_add_task_mobile', 'navbar_contacts_mobile'];
+/**
+ * Ein Array von Zeichenketten, das die IDs der Navigationsleisten (Navbar) auf der Webseite enthält.
+ * Diese IDs werden verwendet, um auf die entsprechenden HTML-Elemente zuzugreifen.
+ * @type {string[]}
+ */
+const ids_navbar = [
+    'navbar_summary',
+    'navbar_board',
+    'navbar_add_task',
+    'navbar_contacts',
+    'navbar_legal',
+    'navbar_summary_mobile',
+    'navbar_board_mobile',
+    'navbar_add_task_mobile',
+    'navbar_contacts_mobile'
+];
 
 
 /**
@@ -9,17 +23,13 @@ ids_navbar_mobile = ['navbar_summary_mobile', 'navbar_board_mobile', 'navbar_add
 async function includeHtml() {
     // Select all elements with the "w3-include-html" attribute.
     let includeElements = document.querySelectorAll('[w3-include-html]');
-
     // Loop through all found elements with the "w3-include-html" attribute.
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
-
         // Get the value of the "w3-include-html" attribute containing the path to the external HTML file.
         file = element.getAttribute("w3-include-html");
-
         // Fetch the external HTML file using the Fetch API.
         let resp = await fetch(file);
-
         // Check if the request was successful (status code 200).
         if (resp.ok) {
             // Insert the content of the external HTML file into the element.
@@ -99,6 +109,12 @@ function closeSubmenu() {
 };
 
 
+/**
+ * Markiert die Verknüpfung (Shortcut) in der Seitenleiste und auf mobilen Geräten.
+ * Entfernt zuerst jegliche vorherige Markierung und fügt dann die Markierung hinzu.
+ * @param {string} id - Die ID des Desktop-Elements der Verknüpfung.
+ * @param {string} id_mobile - Die ID des mobilen Elements der Verknüpfung.
+ */
 function markShortcut(id, id_mobile) {
     setTimeout(() => {
         demarkShortcut();
@@ -108,6 +124,9 @@ function markShortcut(id, id_mobile) {
 };
 
 
+/**
+ * Entfernt jegliche Markierungen von Verknüpfungen in der Seitenleiste und auf mobilen Geräten.
+ */
 function demarkShortcut() {
     for (let i = 0; i < ids_navbar.length; i++) {
         const id = ids_navbar[i];
@@ -120,3 +139,4 @@ function demarkShortcut() {
         };
     };
 };
+
