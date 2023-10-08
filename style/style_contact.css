@@ -1315,6 +1315,25 @@ hr {
 
     }
 
+    .FS47-700 {
+        font-size: 36px;
+    }
+
+    .FS36-400 {
+        font-size: 24px;
+    }
+
+    .usercircle_Mobile {
+        font-size: 18px;
+        height: 60px;
+        width: 60px;
+    }
+
+    .contactDetailMobileBackImg {
+        position: relative;
+        right: 24px;
+    }
+
 
 }
 
@@ -1337,7 +1356,7 @@ hr {
     }
 
     .FS47-700 {
-        font-size: 42px;
+        font-size: 24px;
     }
 
     .FS20-400 {
