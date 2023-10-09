@@ -263,6 +263,7 @@ function openTask(j) {
 function closeTaskDetail() {
     slideOutTask();
     setTimeout(function () { clearHtmlSingleTask() }, 400);
+    initBoard();
 };
 
 
@@ -346,15 +347,38 @@ function addMemberTaskDetail(j) {
  */
 function addSubtasksTaskDetail(j) {
     let content = document.getElementById('detail_task_subtasks');
+    let status;
+
     content.innerHTML = '';
 
     // Loop through each subtask of the task (indexed by 'k')
     for (let k = 0; k < tasks[j]['subtasks'].length; k++) {
         const subtask = tasks[j]['subtasks'][k];
-
+        status = 'ungehakt';
         // Generate the HTML template for displaying the subtask using the 'templateSubtasksTaskDetail' function
-        content.innerHTML += templateSubtasksTaskDetail(subtask, k, j);
+        content.innerHTML += templateSubtasksTaskDetail(subtask, k, j, status);
     };
+
+    for (let k = 0; k < tasks[j]['subtasks-done'].length; k++) {
+        const subtask = tasks[j]['subtasks-done'][k];
+        status = 'gehakt';
+        // Generate the HTML template for displaying the subtask using the 'templateSubtasksTaskDetail' function
+        content.innerHTML += templateSubtasksTaskDetail(subtask, k, j, status);
+    };
+};
+
+
+async function changeStatusSubtask(task, subtask, status) {
+    if (status == 0) {
+        tasks[task]['subtasks-done'].push(tasks[task]['subtasks'][subtask]);
+        tasks[task]['subtasks'].splice(subtask,1)
+    };
+    if (status == 1) {
+        tasks[task]['subtasks'].push(tasks[task]['subtasks-done'][subtask]);
+        tasks[task]['subtasks-done'].splice(subtask,1)
+    };
+    await safeTasks();
+    addSubtasksTaskDetail(task);
 };
 
 

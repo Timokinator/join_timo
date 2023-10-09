@@ -81,6 +81,7 @@ function pushTaskToArray(title, description, category, member, dueDate, prio, su
         'dueDate': dueDate,
         'prio': prio,
         'subtasks': subtasks,
+        'subtasks-done': [],
         'status': status,
         'initials': initialsMembers,
         'colors': colors,

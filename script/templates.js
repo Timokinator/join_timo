@@ -81,10 +81,10 @@ function templateSingleTask(task, j) {
 
             <div class="single-task-subtasks">
                 <div class="progress width-50" role="progressbar" aria-label="Basic example" aria-valuenow="${task['subtasks'].length}/${task['subtasks'].length}" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" style="width: ${task['subtasks'].length / task['subtasks'].length * 100}%">
+                    <div class="progress-bar" style="width: ${task['subtasks-done'].length / (task['subtasks'].length + task['subtasks-done'].length) * 100}%">
                     </div>
                 </div>
-                <span class="text-subtasks">${task['subtasks'].length} / ${task['subtasks'].length} Subtasks</span>
+                <span class="text-subtasks">${task['subtasks-done'].length} / ${task['subtasks'].length + task['subtasks-done'].length} Subtasks</span>
                 
             </div>
 
@@ -306,11 +306,22 @@ function templateMembersChose(contact) {
  * @param {number} i - The index of the subtask in the subtasks array.
  * @returns {string} The HTML template for a single subtask in the edit task form.
  */
-function templateSubtasksEditTask(j, i) {
+function templateSubtasksEditTask(j, i, status) {
+    let number;
+    let array;
+
+    if (status == 'ungehakt') {
+        number = 0;
+        array = 'subtasks'
+    } else if (status == 'gehakt') {
+        number = 1;
+        array = 'subtasks-done'
+    };
     return /*html*/`
         <div class="text-subtask">
-            ${tasks[j]['subtasks'][i]}
-            <img onclick="deleteSubtaskEditTask(${j}, ${i})" class="hover" id="delete_btn_subtasks${i}" src="../assets/icons/trash.png" alt="">
+        <img id="img_checkbox_subtask_edit_task" onclick="changeStatusSubtaskEditTask(${j}, ${i}, ${number})" class="img-checkbox-${status}" src="../assets/icons/icon_button_${status}.svg" alt="">
+            ${tasks[j][array][i]}
+            <img onclick="deleteSubtaskEditTask(${j}, ${i}, ${number})" class="hover" id="delete_btn_subtasks${i}" src="../assets/icons/trash.png" alt="">
         </div>
     `;
 };
@@ -549,10 +560,21 @@ function templateMemberTaskDetail(member, k, j) {
  * @param {number} j - The index of the task in the 'tasks' array.
  * @returns {string} The HTML template for displaying the subtask in the task detail view.
  */
-function templateSubtasksTaskDetail(subtask, k, j) {
+function templateSubtasksTaskDetail(subtask, k, j, subtaskStatus) {
+    let number
+    if (subtaskStatus == 'ungehakt') {
+        number = 0;
+    } else if (subtaskStatus == 'gehakt') {
+        number = 1;
+    };
     return /*html*/`
         <div class="text-subtask">
+            <img id="img_checkbox_subtask" onclick="changeStatusSubtask(${j}, ${k}, ${number})" class="img-checkbox-${subtaskStatus}" src="../assets/icons/icon_button_${subtaskStatus}.svg" alt="">
             ${subtask}
         </div>
     `;
 };
+
+
+
+

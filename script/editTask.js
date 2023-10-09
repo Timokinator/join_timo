@@ -30,17 +30,26 @@ async function editTask(j) {
 
 
 /**
- * Loads subtasks for the task with index 'j' into the edit task form.
- * @param {number} j - The index of the task in the tasks array.
+ * Lädt Unteraufgaben für die Aufgabe mit Index 'j' in das Bearbeitungsformular der Aufgabe.
+ *
+ * @param {number} j - Der Index der Aufgabe im tasks-Array.
  */
 function loadSubtasksEditTask(j) {
     let content = document.getElementById('container_subtasks');
     content.innerHTML = '';
     for (let i = 0; i < tasks[j]['subtasks'].length; i++) {
         const subtask = tasks[j]['subtasks'][i];
-        content.innerHTML += templateSubtasksEditTask(j, i);
+        let status = 'ungehakt';
+        content.innerHTML += templateSubtasksEditTask(j, i, status);
+    }
+
+    for (let i = 0; i < tasks[j]['subtasks-done'].length; i++) {
+        const subtask = tasks[j]['subtasks-done'][i];
+        let status = 'gehakt';
+        content.innerHTML += templateSubtasksEditTask(j, i, status);
     };
 };
+
 
 
 /**
@@ -48,9 +57,35 @@ function loadSubtasksEditTask(j) {
  * @param {number} j - The index of the task in the tasks array.
  * @param {number} i - The index of the subtask to be deleted in the subtasks array.
  */
-function deleteSubtaskEditTask(j, i) {
-    tasks[j]['subtasks'].splice(i, 1);
+function deleteSubtaskEditTask(j, i, status) {
+    let array;
+    if (status == 0) {
+        array = 'subtasks'
+    } else if (status == 1) {
+        array = 'subtasks-done'
+    };
+    tasks[j][array].splice(i, 1);
     loadSubtasksEditTask(j);
+};
+
+
+/**
+ * Ändert den Status einer Unteraufgabe in einer Aufgabe und aktualisiert die Aufgabenliste.
+ *
+ * @param {number} task - Der Index der Aufgabe, zu der die Unteraufgabe gehört.
+ * @param {number} subtask - Der Index der zu ändernden Unteraufgabe.
+ * @param {number} status - Der neue Status der Unteraufgabe (0 für erledigt, 1 für ausstehend).
+ */
+async function changeStatusSubtaskEditTask(task, subtask, status) {
+    if (status == 0) {
+        tasks[task]['subtasks-done'].push(tasks[task]['subtasks'][subtask]);
+        tasks[task]['subtasks'].splice(subtask, 1);
+    }
+    if (status == 1) {
+        tasks[task]['subtasks'].push(tasks[task]['subtasks-done'][subtask]);
+        tasks[task]['subtasks-done'].splice(subtask, 1);
+    }
+    loadSubtasksEditTask(task);
 };
 
 
