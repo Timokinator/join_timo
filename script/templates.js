@@ -80,7 +80,12 @@ function templateSingleTask(task, j) {
             </div>
 
             <div class="single-task-subtasks">
-                <span>Subtasks: </span>${task['subtasks'].length}
+                <div class="progress width-50" role="progressbar" aria-label="Basic example" aria-valuenow="${task['subtasks'].length}/${task['subtasks'].length}" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: ${task['subtasks'].length / task['subtasks'].length * 100}%">
+                    </div>
+                </div>
+                <span class="text-subtasks">${task['subtasks'].length} / ${task['subtasks'].length} Subtasks</span>
+                
             </div>
 
             <div class="container-member-prio">
