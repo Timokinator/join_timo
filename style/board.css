@@ -288,6 +288,8 @@ header {
     width: 100%;
     display: flex;
     gap: 8px;
+    align-items: center;
+    justify-content: flex-start
 }
 
 .width-50 {
@@ -296,6 +298,7 @@ header {
 
 .text-subtasks {
     font-size: 14px;
+    white-space: nowrap;
 }
 
 .img-checkbox-gehakt {
