@@ -51,7 +51,6 @@ function loadSubtasksEditTask(j) {
 };
 
 
-
 /**
  * Deletes the subtask at index 'i' from the task with index 'j' and reloads the subtasks in the edit task form.
  * @param {number} j - The index of the task in the tasks array.
@@ -97,7 +96,8 @@ function addSubtaskEditTask(j) {
     let subtask = document.getElementById('input_subtask');
     tasks[j]['subtasks'].push(subtask.value);
     subtask.value = '';
-    renderSubtasksEditTask(j);
+    loadSubtasksEditTask(j);
+    //renderSubtasksEditTask(j);
 };
 
 

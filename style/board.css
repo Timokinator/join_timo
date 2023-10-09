@@ -137,7 +137,7 @@ header {
     gap: 4px;
     width: 25%;
     padding: 4px 8px;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
 }
 
 .headline-row-status-board {
@@ -187,7 +187,7 @@ header {
     border-radius: 30px;
     padding: 16px;
     gap: 16px;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     position: relative;
 }
 
@@ -714,6 +714,7 @@ header {
         display: grid;
         grid-template-columns: 100%;
         padding: 0;
+        width: 75%;
     }
 
     .container-content {
@@ -787,6 +788,10 @@ header {
 
     .title-formular-on-board {
         font-size: 32px;
+    }
+
+    .container-rows-board {
+        width: 95%;
     }
 
 

@@ -348,9 +348,7 @@ function addMemberTaskDetail(j) {
 function addSubtasksTaskDetail(j) {
     let content = document.getElementById('detail_task_subtasks');
     let status;
-
     content.innerHTML = '';
-
     // Loop through each subtask of the task (indexed by 'k')
     for (let k = 0; k < tasks[j]['subtasks'].length; k++) {
         const subtask = tasks[j]['subtasks'][k];
@@ -358,7 +356,6 @@ function addSubtasksTaskDetail(j) {
         // Generate the HTML template for displaying the subtask using the 'templateSubtasksTaskDetail' function
         content.innerHTML += templateSubtasksTaskDetail(subtask, k, j, status);
     };
-
     for (let k = 0; k < tasks[j]['subtasks-done'].length; k++) {
         const subtask = tasks[j]['subtasks-done'][k];
         status = 'gehakt';
@@ -368,14 +365,22 @@ function addSubtasksTaskDetail(j) {
 };
 
 
+/**
+ * Ändert den Status einer Teilaufgabe (Subtask) in einer Aufgabe.
+ *
+ * @param {number} task - Der Index der Aufgabe im 'tasks'-Array.
+ * @param {number} subtask - Der Index der Teilaufgabe im 'subtasks'-Array der Aufgabe.
+ * @param {number} status - Der neue Status für die Teilaufgabe (0 für 'ungehakt', 1 für 'gehakt').
+ * @returns {Promise<void>} Ein Promise, das auf die Aktualisierung der Aufgaben wartet.
+ */
 async function changeStatusSubtask(task, subtask, status) {
     if (status == 0) {
         tasks[task]['subtasks-done'].push(tasks[task]['subtasks'][subtask]);
-        tasks[task]['subtasks'].splice(subtask,1)
+        tasks[task]['subtasks'].splice(subtask, 1);
     };
     if (status == 1) {
         tasks[task]['subtasks'].push(tasks[task]['subtasks-done'][subtask]);
-        tasks[task]['subtasks-done'].splice(subtask,1)
+        tasks[task]['subtasks-done'].splice(subtask, 1);
     };
     await safeTasks();
     addSubtasksTaskDetail(task);

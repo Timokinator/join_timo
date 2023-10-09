@@ -302,8 +302,10 @@ function templateMembersChose(contact) {
 
 /**
  * Generates the HTML template for a single subtask in the edit task form.
+ *
  * @param {number} j - The index of the task in the tasks array.
  * @param {number} i - The index of the subtask in the subtasks array.
+ * @param {string} status - The status of the subtask ('ungehakt' or 'gehakt').
  * @returns {string} The HTML template for a single subtask in the edit task form.
  */
 function templateSubtasksEditTask(j, i, status) {
@@ -312,10 +314,10 @@ function templateSubtasksEditTask(j, i, status) {
 
     if (status == 'ungehakt') {
         number = 0;
-        array = 'subtasks'
+        array = 'subtasks';
     } else if (status == 'gehakt') {
         number = 1;
-        array = 'subtasks-done'
+        array = 'subtasks-done';
     };
     return /*html*/`
         <div class="text-subtask">
@@ -558,10 +560,11 @@ function templateMemberTaskDetail(member, k, j) {
  * @param {string} subtask - The text content of the subtask.
  * @param {number} k - The index of the subtask in the 'subtasks' array of the task.
  * @param {number} j - The index of the task in the 'tasks' array.
+ * @param {string} subtaskStatus - The status of the subtask ('ungehakt' or 'gehakt').
  * @returns {string} The HTML template for displaying the subtask in the task detail view.
  */
 function templateSubtasksTaskDetail(subtask, k, j, subtaskStatus) {
-    let number
+    let number;
     if (subtaskStatus == 'ungehakt') {
         number = 0;
     } else if (subtaskStatus == 'gehakt') {
@@ -574,7 +577,3 @@ function templateSubtasksTaskDetail(subtask, k, j, subtaskStatus) {
         </div>
     `;
 };
-
-
-
-
