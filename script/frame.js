@@ -79,7 +79,7 @@ function openSubmenu(resolution) {
 function renderSubmenuDesktop() {
     return /*html*/`
         <div onclick="closeSubmenu()" class="submenu">
-            <a href="../html/index.html">Log out</a>
+            <a href="../index.html">Log out</a>
         </div >
     `;
 };
@@ -94,7 +94,7 @@ function renderSubmenuMobile() {
         <div class="submenu">
             <a href="../html/help.html">Help</a>
             <a href="../html/legal_notice.html">Legal Notice</a>
-            <a href="../html/index.html">Log out</a>
+            <a href="../index.html">Log out</a>
         </div >
     `;
 };

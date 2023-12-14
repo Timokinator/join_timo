@@ -253,6 +253,7 @@ html {
 .contact_small {
     display: block;
     /*width: 357px; */
+    width: 100%;
 
 }
 
@@ -262,6 +263,7 @@ html {
 
 .contact_small_content a {
     color: #29ABE2;
+    font-size: 14px;
 }
 
 .contact_small_content:hover {
@@ -352,6 +354,7 @@ html {
     border: solid white 3px;
     margin-left: 16px;
     margin-right: 16px;
+    min-width: 42px;
 }
 
 .usercircle_Mobile {
