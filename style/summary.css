@@ -21,7 +21,7 @@ html {
     left: 355px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 36px;
+    gap: 16px;
 }
 
 .topbar-user-img {
@@ -33,13 +33,14 @@ html {
     display: flex;
     align-items: flex-start;
     gap: 35px;
+    justify-content: space-between;
 }
 
 .tasks {
     display: flex;
-    width: 170px;
-    height: 170px;
-    padding: 25px 0px;
+    width: 120px;
+    height: 120px;
+    /* padding: 25px 0px; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -68,7 +69,7 @@ html {
     color: #2A3647;
     text-align: center;
     font-family: Inter;
-    font-size: 21px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
@@ -80,7 +81,7 @@ html {
     color: #000;
     text-align: center;
     font-family: Inter;
-    font-size: 64px;
+    font-size: 32px;
     font-style: normal;
     font-weight: 600;
     line-height: 120%;
@@ -90,7 +91,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 64px;
+    gap: 16px; /* 64 */
     padding-bottom: 64px;
 }
 
@@ -98,11 +99,11 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 24px;
+    gap: 12px;
     background-color: #FFF;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-    padding: 28px 48px;
+    padding: 12px 24px;
     width: 100%;
 }
 
@@ -132,7 +133,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 64px;
+    font-size: 32px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -196,11 +197,13 @@ html {
     align-items: center;
     justify-content: center;
     gap: 24px;
-    padding: 28px 38px;
+    /* padding: 28px 38px; */
     background-color: #FFF;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-    width: 50%;
+    width: 35%;
+    min-width: 120px;
+    height: 120px;
 }
 
 .container-summary-todo:hover,
@@ -212,7 +215,7 @@ html {
 
 .text-summary-todo-and-done {
     color: #2A3647;
-    font-size: 21px;
+    font-size: 16px;
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
@@ -233,7 +236,7 @@ html {
 .summary-done-text {
     color: #000;
     text-align: center;
-    font-size: 64px;
+    font-size: 32px;
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
@@ -241,7 +244,7 @@ html {
 }
 
 .container-headline-summary {
-    margin-bottom: 88px;
+    margin-bottom: 0;
 }
 
 .summary-username {
@@ -262,6 +265,9 @@ html {
     line-height: 120%;
 }
 
+.img-icon-todo-done {
+    width: 40px;
+}
 
 
 /* Responsive */
@@ -279,7 +285,7 @@ html {
     }
 
     .greetingContainer {
-        padding-top: 32px;
+        padding-top: 0;
     }
 
 }
@@ -316,7 +322,7 @@ html {
 
     .container_progress_and_welcome {
         padding-left: 0;
- 
+
     }
 
     .greetingContainer {
@@ -328,8 +334,7 @@ html {
 
 @media (max-width: 600px) {
     .tasks {
-        scale: 0.9;
-        ;
+        height: auto;
     }
 
     .innerTasksBox {
@@ -348,12 +353,15 @@ html {
         margin-bottom: 24px;
     }
 
-    .container-summary-done img, .container-summary-todo img {
+    .container-summary-done img,
+    .container-summary-todo img {
         width: 32px;
     }
 
-    .container-summary-done, .container-summary-todo {
-        padding: 14px 8px;
+    .container-summary-done,
+    .container-summary-todo {
+       height: auto;
+       padding: 4px;
     }
 
     .container_summary_done_todo {
@@ -361,7 +369,7 @@ html {
     }
 
     .container-summary-urgent-date {
-        padding: 14px 24px;
+        
     }
 
 
